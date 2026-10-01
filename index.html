@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GH-300 Quiz · Repaso GitHub Copilot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>GH-300 · Batería de preguntas</h1>
+    <p class="subtitle">Repaso de GitHub Copilot basado en el banco de preguntas</p>
+  </header>
+
+  <main id="app">
+    <section id="setup-screen" class="screen">
+      <h2>Configura tu repaso</h2>
+
+      <div class="field">
+        <label for="category-select">Categoría</label>
+        <select id="category-select"></select>
+      </div>
+
+      <div class="field">
+        <label for="question-count">Número de preguntas</label>
+        <input type="number" id="question-count" min="1" value="10" />
+      </div>
+
+      <div class="field checkbox-field">
+        <label>
+          <input type="checkbox" id="shuffle-options" checked />
+          Mezclar orden de las opciones
+        </label>
+      </div>
+
+      <div class="field checkbox-field">
+        <label>
+          <input type="checkbox" id="only-confirmed" />
+          Incluir solo preguntas con respuesta confirmada
+        </label>
+      </div>
+
+      <button id="start-btn" class="primary-btn">Empezar quiz</button>
+    </section>
+
+    <section id="quiz-screen" class="screen hidden">
+      <div class="quiz-progress">
+        <span id="progress-label"></span>
+        <div class="progress-bar"><div id="progress-fill"></div></div>
+      </div>
+
+      <div class="question-card">
+        <span id="question-category" class="badge"></span>
+        <h2 id="question-text"></h2>
+        <p id="question-hint" class="hint"></p>
+        <ul id="options-list" class="options-list"></ul>
+      </div>
+
+      <div id="feedback" class="feedback hidden"></div>
+
+      <div class="quiz-actions">
+        <button id="check-btn" class="primary-btn">Comprobar</button>
+        <button id="next-btn" class="primary-btn hidden">Siguiente</button>
+        <button id="quit-btn" class="secondary-btn">Salir</button>
+      </div>
+    </section>
+
+    <section id="result-screen" class="screen hidden">
+      <h2>Resultado</h2>
+      <p id="result-summary" class="result-summary"></p>
+      <div id="result-breakdown" class="result-breakdown"></div>
+      <button id="restart-btn" class="primary-btn">Repetir quiz</button>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Proyecto local de repaso · sin backend · datos en <code>data/questions.js</code></p>
+  </footer>
+
+  <script src="data/questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
