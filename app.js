@@ -145,6 +145,8 @@
     if (q.explanation) html += ` ${q.explanation}`;
     if (q.confidence === "proposed") {
       html += `<span class="proposed-note">⚠️ Respuesta propuesta: no confirmada oficialmente, revisa el material original.</span>`;
+    } else if (q.confidence === "community") {
+      html += `<span class="proposed-note">ℹ️ Pregunta de la comunidad (ghcertified.com), no es una pregunta oficial del examen.</span>`;
     }
     feedbackEl.innerHTML = html;
 

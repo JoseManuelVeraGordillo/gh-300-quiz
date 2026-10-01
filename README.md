@@ -50,3 +50,8 @@ Edita [data/questions.js](data/questions.js). Cada pregunta tiene el formato:
 ## Origen
 
 Preguntas extraídas y organizadas a partir de un banco de repaso en castellano sobre GitHub Copilot / GH-300.
+
+Se ha añadido además un bloque de 38 preguntas de la categoría **"Banco comunidad (ghcertified.com)"**, traducidas al castellano a partir del proyecto open-source [ghcertified](https://github.com/v-fidelusaleksander/ghcertified) (licencia GPLv3), que recopila preguntas de práctica no oficiales creadas por la comunidad para la certificación GH-300. Estas preguntas se marcan con `confidence: "community"` y no son preguntas reales del examen oficial.
+
+> ⚠️ Se han evitado deliberadamente sitios de tipo "exam dump" (p. ej. ExamTopics) que publican supuestas preguntas reales del examen, ya que ir en contra de los términos de servicio de la certificación y plantea problemas éticos/legales. Para el temario oficial consulta la [guía de estudio de Microsoft Learn para GH-300](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-300).
+

@@ -1060,5 +1060,557 @@ const QUESTIONS = [
     correct: [0],
     confidence: "correct",
     explanation: ""
+  },
+
+  // 12. Banco comunitario adicional (fuente: ghcertified.com / GitHub v-fidelusaleksander/ghcertified, licencia GPLv3)
+  {
+    id: 74,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿GitHub Copilot es gratuito para todo el mundo?",
+    type: "single",
+    options: ["No", "Sí"],
+    correct: [1],
+    confidence: "community",
+    explanation: "Existe un plan gratuito con límites de uso además de los planes de pago. Consulta github.com/features/copilot/plans."
+  },
+  {
+    id: 75,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cuál de las siguientes NO es una forma posible de conceder acceso a Copilot a miembros de una organización?",
+    type: "single",
+    options: [
+      "Como miembro de una organización, puedes activar Copilot directamente desde la configuración de tu cuenta.",
+      "Desde la configuración de Enterprise, habilitar GitHub Copilot para organizaciones seleccionadas o para todas.",
+      "Desde la configuración de la Organización, habilitar GitHub Copilot para equipos o usuarios seleccionados, o para toda la organización.",
+      "Usando la API REST de GitHub para conceder acceso a Copilot a equipos o usuarios específicos de tu organización."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: "El acceso lo concede la organización/empresa, no el propio usuario desde su cuenta personal."
+  },
+  {
+    id: 76,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué IDEs NO están soportados por GitHub Copilot?",
+    type: "multiple",
+    options: ["NetBeans", "BlueJ", "Code::Blocks", "Visual Studio Code", "Eclipse", "Xcode"],
+    correct: [0, 1, 2],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 77,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué comando instala GitHub Copilot CLI?",
+    type: "single",
+    options: [
+      "npm install -g @github/copilot",
+      "gh install -g github/copilot-cli",
+      "npm install -g gh-copilot",
+      "gh extension install github/gh-copilot"
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 78,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cuáles son algunos de los principios de Prompt Engineering?",
+    type: "multiple",
+    options: [
+      "Centrarse en una tarea única y bien definida.",
+      "Asegurar que las instrucciones sean detalladas y explícitas.",
+      "Proporcionar contexto rico para la IA.",
+      "Escribir instrucciones largas y complejas."
+    ],
+    correct: [0, 1, 2],
+    confidence: "community",
+    explanation: "Si quieres que Copilot complete una tarea compleja o grande, divide la tarea en varias tareas simples y pequeñas."
+  },
+  {
+    id: 79,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cómo puedes excluir archivos específicos de GitHub Copilot?",
+    type: "single",
+    options: [
+      "Editando el archivo .gitignore.",
+      "Yendo a la configuración del repositorio en GitHub y añadiendo las rutas a excluir.",
+      "Configurando exclusiones en el archivo de configuración de Copilot.",
+      "Usando un comando en la terminal."
+    ],
+    correct: [1],
+    confidence: "community",
+    explanation: ".gitignore excluye el archivo de git, no de Copilot."
+  },
+  {
+    id: 80,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué es cierto sobre las exclusiones de contenido de Copilot?",
+    type: "multiple",
+    options: [
+      "Las exclusiones de contexto pueden configurarse a nivel de repositorio y de organización.",
+      "Copilot ofrece distintos planes con diferentes consideraciones de privacidad.",
+      "Copilot ignora completamente los archivos excluidos.",
+      "Las exclusiones de contenido no afectan al autocompletado de código.",
+      "Las exclusiones de contenido se aplican instantáneamente."
+    ],
+    correct: [0, 1],
+    confidence: "community",
+    explanation: "Copilot puede usar información de un archivo excluido si la proporciona el IDE de forma indirecta, y los cambios pueden tardar hasta 30 minutos en aplicarse."
+  },
+  {
+    id: 81,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué describe mejor el archivo de configuración del editor de GitHub Copilot (instrucciones personalizadas)?",
+    type: "single",
+    options: [
+      "Un archivo JSON con ajustes de seguridad.",
+      "Un archivo Markdown con instrucciones en lenguaje natural para personalizar las respuestas de Copilot Chat.",
+      "Un archivo YAML con instrucciones de build.",
+      "Un archivo XML con ajustes de despliegue."
+    ],
+    correct: [1],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 82,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Para qué sirve la Productivity API de GitHub Copilot?",
+    type: "single",
+    options: [
+      "Para recopilar registros de auditoría.",
+      "Para excluir archivos específicos.",
+      "Para recopilar métricas de uso de los miembros de la organización.",
+      "Para actualizar Copilot automáticamente."
+    ],
+    correct: [2],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 83,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué integra GitHub Copilot Chat con herramientas externas?",
+    type: "single",
+    options: [
+      "GitHub Copilot Extensions",
+      "GitHub Copilot Marketplace",
+      "GitHub Copilot Integrations",
+      "GitHub Copilot Open"
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 84,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cómo puedes dar a GitHub Copilot contexto para generar respuestas adaptadas a tu repositorio?",
+    type: "single",
+    options: [
+      "Creando un archivo llamado .github/copilot-instructions.md en el repositorio.",
+      "Enviando un correo a soporte de GitHub con los detalles del proyecto.",
+      "Modificando el archivo .gitconfig para incluir instrucciones personalizadas.",
+      "Creando un issue de GitHub llamado copilot-instructions con el contexto necesario."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 85,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Puede GitHub Copilot usar información semántica de un archivo ignorado por las exclusiones de contenido?",
+    type: "single",
+    options: [
+      "Sí, si la información se la proporciona el IDE de forma indirecta.",
+      "No, ignorará toda la información de los archivos excluidos."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: "Copilot puede usar información semántica de un archivo excluido si el IDE la proporciona indirectamente (p. ej. tipos, definiciones al pasar el ratón, configuración de build)."
+  },
+  {
+    id: 86,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué ocurre cuando excluyes contenido de GitHub Copilot?",
+    type: "multiple",
+    options: [
+      "El autocompletado no estará disponible en los archivos afectados.",
+      "El contenido de los archivos afectados no influirá en las sugerencias de otros archivos.",
+      "El contenido de los archivos afectados seguirá influyendo en las respuestas de Copilot Chat.",
+      "El autocompletado no se verá afectado en los archivos afectados."
+    ],
+    correct: [0, 1],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 87,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cuál es la forma más sencilla de empezar a usar GitHub Copilot?",
+    type: "single",
+    options: [
+      "Solicitar acceso a soporte de GitHub y esperar aprobación.",
+      "Usar la web de Copilot y pegar tu código para pedir sugerencias.",
+      "Instalar la extensión de Copilot en tu entorno preferido, como Visual Studio Code.",
+      "Crear un repositorio público nuevo y activar Copilot para que escanee tu código."
+    ],
+    correct: [2],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 88,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué analiza GitHub Copilot para ofrecer sugerencias relevantes mientras desarrollas código?",
+    type: "single",
+    options: [
+      "Analiza el contexto de todos los archivos del repositorio.",
+      "Analiza el contexto del archivo actual y archivos relacionados.",
+      "Analiza únicamente el contexto dentro del archivo actual.",
+      "Analiza únicamente el contexto de la línea de código actual."
+    ],
+    correct: [1],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 89,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cuál de las siguientes describe mejor a GitHub Copilot?",
+    type: "single",
+    options: [
+      "Un asistente de codificación con IA que ayuda sugiriendo y completando código.",
+      "Un sistema de control de versiones que rastrea cambios en el código.",
+      "Un editor de código con funciones de depuración y detección de errores.",
+      "Una herramienta que prueba y despliega código automáticamente a producción."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 90,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cómo gestiona GitHub Copilot la retención de datos de las sugerencias de código en el IDE?",
+    type: "single",
+    options: [
+      "Las sugerencias se mantienen temporalmente en memoria y se descartan tras su uso, sin escribirse en disco.",
+      "Todas las sugerencias se almacenan permanentemente en una base de datos local.",
+      "Las sugerencias se guardan automáticamente en repositorios de GitHub.",
+      "Los fragmentos de código se cachean en disco durante 30 días antes de borrarse."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 91,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué pasos ocurren cuando el servicio proxy de GitHub Copilot procesa un prompt?",
+    type: "single",
+    options: [
+      "Pruebas de lenguaje tóxico, comprobaciones de relevancia y detección de intentos de prompt hacking.",
+      "Traducción a varios lenguajes de programación y validación de sintaxis.",
+      "Compilación y ejecución automática del código en un sandbox.",
+      "Envío directo a repositorios públicos para comprobación de referencias."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 92,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué conjunto de principios representa correctamente los seis principios clave de IA responsable de Microsoft que guían el desarrollo de GitHub Copilot?",
+    type: "single",
+    options: [
+      "Equidad (Fairness), Fiabilidad y Seguridad, Privacidad y Seguridad, Inclusión, Transparencia y Responsabilidad.",
+      "Eficiencia, Velocidad, Precisión, Innovación, Fiabilidad y Seguridad.",
+      "Privacidad, Rendimiento, Accesibilidad, Escalabilidad, Mantenibilidad y Pruebas.",
+      "Seguridad, Desarrollo, Operaciones, Mantenimiento, Soporte y Documentación."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 93,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cuál de las siguientes es un beneficio potencial de usar GitHub Copilot para mejorar los flujos de trabajo de desarrollo?",
+    type: "single",
+    options: [
+      "Puede sugerir fragmentos de código para aumentar la productividad del desarrollador.",
+      "Elimina por completo la necesidad de revisión de código en todos los proyectos.",
+      "Fusiona automáticamente las pull requests sin aprobación humana.",
+      "Solo funciona con software escrito en un único lenguaje de programación."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 94,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué afirmación describe correctamente a GitHub Copilot CLI?",
+    type: "single",
+    options: [
+      "Permite usar Copilot desde tu terminal para responder preguntas, escribir y depurar código, e interactuar con GitHub.com.",
+      "Se limita a generar alias de shell para gh copilot suggest y gh copilot explain.",
+      "Solo funciona dentro de la interfaz web de GitHub y no puede acceder a archivos locales del proyecto.",
+      "Ejecuta automáticamente cada comando de shell sugerido sin pedir aprobación."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 95,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cuál es el propósito principal del comando con barra '/tests' en GitHub Copilot?",
+    type: "single",
+    options: [
+      "Genera un conjunto de pruebas unitarias para el archivo actualmente abierto, usando contexto de pruebas existentes si las hay.",
+      "Ejecuta todas las pruebas unitarias existentes del proyecto sin generar nuevas.",
+      "Solo valida la sintaxis de los archivos de prueba existentes sin crear nuevas pruebas.",
+      "Elimina permanentemente todos los archivos de prueba existentes para empezar de cero."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 96,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cómo se calcula el uso de asientos (seats) de GitHub Copilot a nivel enterprise durante un ciclo de facturación?",
+    type: "single",
+    options: [
+      "Número de asientos × (días transcurridos / días totales del ciclo de facturación).",
+      "Número total de commits × número de desarrolladores activos.",
+      "Número de sugerencias de código × número de finalizaciones aceptadas.",
+      "Tamaño total del repositorio × número de organizaciones."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 97,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cómo funciona la función de coincidencia de código público (matching public code) de GitHub Copilot?",
+    type: "single",
+    options: [
+      "Busca coincidencias comparando las sugerencias con un índice de repositorios públicos de GitHub, que se actualiza cada pocos meses.",
+      "Realiza búsquedas en tiempo real en todos los repositorios de GitHub, incluidos los privados.",
+      "Solo compara código de repositorios creados en las últimas 24 horas.",
+      "Compara el código con plataformas externas de alojamiento de código fuera de GitHub."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 98,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué comprobaciones de post-procesamiento se realizan sobre las respuestas de GitHub Copilot?",
+    type: "single",
+    options: [
+      "Lenguaje tóxico, relevancia, calidad del código (incluidas vulnerabilidades de seguridad), identificadores únicos y coincidencia opcional con código público.",
+      "Únicamente validación de sintaxis y formato de código.",
+      "Benchmarking de rendimiento y optimización del uso de memoria.",
+      "Solo comprobación de errores de compilación y excepciones en tiempo de ejecución."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 99,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué elementos puede usar GitHub Copilot como contexto al generar sugerencias?",
+    type: "single",
+    options: [
+      "Contenido del archivo actual, archivos vecinos, URLs de repositorio, rutas de archivo e interacciones de chat previas.",
+      "Solo la línea de código actual que se está editando, sin contexto adicional.",
+      "Exclusivamente documentación externa de Internet.",
+      "Solo el archivo README del proyecto y nada más."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 100,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cuál de los siguientes NO es un modo seleccionable en GitHub Copilot Chat?",
+    type: "single",
+    options: ["Ask", "Plan", "Translate", "Agent"],
+    correct: [2],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 101,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "Al añadir contexto en el chat, es posible añadir archivos individuales pero no carpetas enteras. Esta afirmación es:",
+    type: "single",
+    options: ["Falsa", "Verdadera"],
+    correct: [0],
+    confidence: "community",
+    explanation: "También es posible añadir carpetas enteras como contexto."
+  },
+  {
+    id: 102,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cuáles de los siguientes se pueden añadir como contexto en tu prompt de GitHub Copilot Chat?",
+    type: "multiple",
+    options: [
+      "Símbolos",
+      "Salida de comandos de terminal",
+      "Fallos de pruebas (test failures)",
+      "Repositorios externos",
+      "Variables de entorno (como PATH)"
+    ],
+    correct: [0, 1, 2],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 103,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué son las \"smart actions\"?",
+    type: "single",
+    options: [
+      "Tareas comunes y predefinidas, como explicar código, corregirlo o generar pruebas y documentación, que Copilot Chat puede ejecutar sin necesidad de redactar un prompt.",
+      "Una modalidad avanzada de Copilot usada para depurar y corregir pruebas fallidas.",
+      "Tareas predefinidas para tareas de codificación comunes dentro de una organización, configurables a nivel de repositorio y organización."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 104,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué funciones están disponibles en GitHub Copilot y GitHub Copilot Chat?",
+    type: "single",
+    options: [
+      "Autocompletado de línea de código, inline chat, vista de chat, quick chat y smart actions.",
+      "Autocompletado de línea de código, inline chat, vista de chat, smart actions y code research.",
+      "Autocompletado de línea de código, inline chat, code container y quick chat."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 105,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Cuáles de las siguientes frases son correctas?",
+    type: "multiple",
+    options: [
+      "Los chat participants (como @workspace o @vscode) se usan para aportar contexto extra sobre la base de código, un dominio o una tecnología.",
+      "Los comandos con barra (como /tests, /fix o /explain) son una forma concisa de indicar qué quieres lograr con el prompt.",
+      "No es posible combinar chat participants, comandos y variables de chat en un mismo prompt.",
+      "Los chat participants solo sirven para etiquetar a otros miembros de la organización."
+    ],
+    correct: [0, 1],
+    confidence: "community",
+    explanation: "Los chat participants como @workspace o @vscode están pensados para aportar contexto, no para etiquetar personas."
+  },
+  {
+    id: 106,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Para qué se usa un alias al trabajar con GitHub Copilot CLI?",
+    type: "single",
+    options: [
+      "Permite que Copilot CLI ejecute automáticamente comandos en la línea de comandos.",
+      "Permite indicar en los commits de Git que GitHub Copilot los autoró.",
+      "Permite que GitHub revise y autore pull requests en tu nombre."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 107,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué afirmaciones son correctas sobre GitHub Copilot CLI?",
+    type: "multiple",
+    options: [
+      "Los prompts no se retienen, mientras que las analíticas de uso sí se retienen por defecto.",
+      "Es posible desactivar (opt out) las analíticas de uso opcionales.",
+      "Las respuestas generadas por Copilot CLI pueden revisarse después de cada sugerencia.",
+      "Tanto los prompts como las analíticas de uso se retienen por defecto.",
+      "No es posible desactivar las analíticas de uso porque están anonimizadas.",
+      "GitHub Copilot CLI solo puede explicar o sugerir comandos, pero no ejecutarlos en nombre del usuario."
+    ],
+    correct: [0, 1, 2],
+    confidence: "community",
+    explanation: "Los prompts no se retienen por defecto."
+  },
+  {
+    id: 108,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "Estás desarrollando una aplicación en Kotlin. ¿Qué debes tener en cuenta al usar GitHub Copilot?",
+    type: "single",
+    options: [
+      "Kotlin no está entre los lenguajes con soporte fuerte de Copilot, por lo que las sugerencias pueden ser de menor calidad que en lenguajes mejor soportados como Ruby, Java o C#.",
+      "Kotlin no está soportado, por lo que Copilot no podrá explicar ni corregir código.",
+      "Kotlin no está soportado, pero Copilot podrá explicar o corregir código, solo que no ofrecerá sugerencias.",
+      "Ninguna es correcta, ya que Kotlin sí está entre los lenguajes con soporte fuerte de Copilot."
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 109,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Dónde puedes encontrar información sobre seguridad, propiedad intelectual y privacidad relacionadas con el uso de GitHub Copilot?",
+    type: "single",
+    options: [
+      "GitHub Copilot Trust Center",
+      "GitHub Copilot Compliance Center",
+      "GitHub Copilot Compliance Hub",
+      "GitHub Copilot Legal Center",
+      "GitHub Copilot Legal and Trust Center"
+    ],
+    correct: [0],
+    confidence: "community",
+    explanation: ""
+  },
+  {
+    id: 110,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué planes de suscripción de GitHub Copilot soportan instrucciones personalizadas a nivel de organización?",
+    type: "single",
+    options: [
+      "Todos los planes que incluyen GitHub Copilot.",
+      "Copilot Pro+ y superiores.",
+      "Copilot Business y Copilot Enterprise.",
+      "Solo Copilot Enterprise."
+    ],
+    correct: [2],
+    confidence: "community",
+    explanation: "Las instrucciones personalizadas de organización se configuran en los ajustes de la organización y requieren un plan Business o Enterprise. Las instrucciones a nivel de repositorio están disponibles en todos los planes."
+  },
+  {
+    id: 111,
+    category: "Banco comunidad (ghcertified.com)",
+    question: "¿Qué afirmaciones son correctas sobre el uso de @workspace y #codebase?",
+    type: "multiple",
+    options: [
+      "Aunque @workspace y #codebase permiten hacer preguntas sobre toda la base de código, se recomienda usar #codebase.",
+      "La palabra clave #codebase puede usarse en todos los modos de chat.",
+      "La palabra clave @workspace puede usarse en todos los modos de chat.",
+      "La palabra clave @workspace controla el prompt del usuario y por tanto puede usar otras herramientas."
+    ],
+    correct: [0, 1],
+    confidence: "community",
+    explanation: ""
   }
 ];
