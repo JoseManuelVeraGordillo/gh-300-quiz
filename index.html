@@ -7,6 +7,52 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <button id="stats-toggle" class="stats-toggle" aria-label="Mostrar estadísticas" title="Estadísticas">📊</button>
+  <div id="stats-overlay" class="stats-overlay hidden"></div>
+  <aside id="stats-sidebar" class="stats-sidebar hidden" aria-hidden="true">
+    <div class="stats-header">
+      <h2>Estadísticas</h2>
+      <button id="stats-close" class="icon-btn" aria-label="Cerrar estadísticas">✕</button>
+    </div>
+    <div class="stats-body">
+      <div class="stats-summary">
+        <div class="donut-wrap">
+          <div id="accuracy-donut" class="donut"></div>
+          <div class="donut-hole">
+            <span id="accuracy-pct">0%</span>
+            <small>acierto</small>
+          </div>
+        </div>
+        <div class="stats-numbers">
+          <div class="stat-box correct">
+            <span id="stat-correct">0</span>
+            <small>Aciertos</small>
+          </div>
+          <div class="stat-box wrong">
+            <span id="stat-wrong">0</span>
+            <small>Fallos</small>
+          </div>
+          <div class="stat-box total">
+            <span id="stat-total">0</span>
+            <small>Respondidas</small>
+          </div>
+        </div>
+      </div>
+
+      <h3>Por categoría</h3>
+      <div id="category-bars" class="category-bars">
+        <p class="empty-note">Aún no hay datos. ¡Responde alguna pregunta!</p>
+      </div>
+
+      <h3>Últimas sesiones</h3>
+      <div id="session-bars" class="session-bars">
+        <p class="empty-note">Todavía no has completado ningún quiz.</p>
+      </div>
+
+      <button id="reset-stats" class="secondary-btn">Reiniciar estadísticas</button>
+    </div>
+  </aside>
+
   <header class="app-header">
     <h1>GH-300 · Batería de preguntas</h1>
     <p class="subtitle">Repaso de GitHub Copilot basado en el banco de preguntas</p>

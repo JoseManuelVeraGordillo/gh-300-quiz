@@ -25,7 +25,117 @@
   const resultBreakdownEl = document.getElementById("result-breakdown");
   const restartBtn = document.getElementById("restart-btn");
 
+  const statsToggleBtn = document.getElementById("stats-toggle");
+  const statsCloseBtn = document.getElementById("stats-close");
+  const statsOverlayEl = document.getElementById("stats-overlay");
+  const statsSidebarEl = document.getElementById("stats-sidebar");
+  const resetStatsBtn = document.getElementById("reset-stats");
+  const accuracyDonutEl = document.getElementById("accuracy-donut");
+  const accuracyPctEl = document.getElementById("accuracy-pct");
+  const statCorrectEl = document.getElementById("stat-correct");
+  const statWrongEl = document.getElementById("stat-wrong");
+  const statTotalEl = document.getElementById("stat-total");
+  const categoryBarsEl = document.getElementById("category-bars");
+  const sessionBarsEl = document.getElementById("session-bars");
+
   let session = null; // { questions, index, score, answers }
+
+  // --- Estadísticas persistentes (localStorage) ---
+  const STATS_KEY = "gh300QuizStats";
+
+  function loadStats() {
+    try {
+      const raw = localStorage.getItem(STATS_KEY);
+      if (!raw) throw new Error("no stats");
+      const parsed = JSON.parse(raw);
+      return {
+        totalAnswered: parsed.totalAnswered || 0,
+        totalCorrect: parsed.totalCorrect || 0,
+        byCategory: parsed.byCategory || {},
+        sessions: Array.isArray(parsed.sessions) ? parsed.sessions : []
+      };
+    } catch {
+      return { totalAnswered: 0, totalCorrect: 0, byCategory: {}, sessions: [] };
+    }
+  }
+
+  function saveStats(stats) {
+    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+  }
+
+  function recordAnswer(question, isCorrect) {
+    const stats = loadStats();
+    stats.totalAnswered += 1;
+    if (isCorrect) stats.totalCorrect += 1;
+
+    const cat = stats.byCategory[question.category] || { correct: 0, total: 0 };
+    cat.total += 1;
+    if (isCorrect) cat.correct += 1;
+    stats.byCategory[question.category] = cat;
+
+    saveStats(stats);
+  }
+
+  function recordSession(score, total) {
+    const stats = loadStats();
+    stats.sessions.push({ date: new Date().toISOString(), score, total });
+    stats.sessions = stats.sessions.slice(-12);
+    saveStats(stats);
+  }
+
+  function renderStats() {
+    const stats = loadStats();
+    const pct = stats.totalAnswered ? Math.round((stats.totalCorrect / stats.totalAnswered) * 100) : 0;
+
+    accuracyPctEl.textContent = `${pct}%`;
+    accuracyDonutEl.style.background = `conic-gradient(var(--correct) 0% ${pct}%, var(--wrong) ${pct}% 100%)`;
+    statCorrectEl.textContent = stats.totalCorrect;
+    statWrongEl.textContent = stats.totalAnswered - stats.totalCorrect;
+    statTotalEl.textContent = stats.totalAnswered;
+
+    const categories = Object.keys(stats.byCategory);
+    if (categories.length === 0) {
+      categoryBarsEl.innerHTML = '<p class="empty-note">Aún no hay datos. ¡Responde alguna pregunta!</p>';
+    } else {
+      categoryBarsEl.innerHTML = categories
+        .map((cat) => {
+          const { correct, total } = stats.byCategory[cat];
+          const catPct = total ? Math.round((correct / total) * 100) : 0;
+          return `
+            <div class="category-bar-row">
+              <div class="label"><span>${cat}</span><span>${correct}/${total} (${catPct}%)</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:${catPct}%"></div></div>
+            </div>
+          `;
+        })
+        .join("");
+    }
+
+    if (stats.sessions.length === 0) {
+      sessionBarsEl.innerHTML = '<p class="empty-note">Todavía no has completado ningún quiz.</p>';
+    } else {
+      sessionBarsEl.innerHTML = stats.sessions
+        .map((s) => {
+          const sPct = s.total ? Math.round((s.score / s.total) * 100) : 0;
+          const date = new Date(s.date).toLocaleDateString();
+          return `<div class="session-bar" style="height:${Math.max(sPct, 4)}%" title="${date}: ${s.score}/${s.total} (${sPct}%)"></div>`;
+        })
+        .join("");
+    }
+  }
+
+  function openStats() {
+    statsSidebarEl.classList.remove("hidden");
+    statsOverlayEl.classList.remove("hidden");
+    statsSidebarEl.setAttribute("aria-hidden", "false");
+    renderStats();
+  }
+
+  function closeStats() {
+    statsSidebarEl.classList.add("hidden");
+    statsOverlayEl.classList.add("hidden");
+    statsSidebarEl.setAttribute("aria-hidden", "true");
+  }
 
   function shuffle(array) {
     const copy = [...array];
@@ -152,6 +262,7 @@
 
     if (isCorrect) session.score += 1;
     session.answers.push({ question: q, selected, isCorrect });
+    recordAnswer(q, isCorrect);
 
     checkBtn.classList.add("hidden");
     nextBtn.classList.remove("hidden");
@@ -173,6 +284,8 @@
     const total = session.questions.length;
     const pct = Math.round((session.score / total) * 100);
     resultSummaryEl.textContent = `Has acertado ${session.score} de ${total} preguntas (${pct}%).`;
+    recordSession(session.score, total);
+    renderStats();
 
     resultBreakdownEl.innerHTML = "";
     session.answers.forEach((a, i) => {
@@ -198,5 +311,19 @@
     setupScreen.classList.remove("hidden");
   });
 
+  statsToggleBtn.addEventListener("click", openStats);
+  statsCloseBtn.addEventListener("click", closeStats);
+  statsOverlayEl.addEventListener("click", closeStats);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeStats();
+  });
+  resetStatsBtn.addEventListener("click", () => {
+    if (confirm("¿Seguro que quieres borrar todas las estadísticas guardadas?")) {
+      localStorage.removeItem(STATS_KEY);
+      renderStats();
+    }
+  });
+
   populateCategories();
+  renderStats();
 })();
