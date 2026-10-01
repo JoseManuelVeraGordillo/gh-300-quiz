@@ -37,11 +37,24 @@
   const statTotalEl = document.getElementById("stat-total");
   const categoryBarsEl = document.getElementById("category-bars");
   const sessionBarsEl = document.getElementById("session-bars");
+  const goalInputEl = document.getElementById("goal-input");
+  const readinessBadgeEl = document.getElementById("readiness-badge");
 
   let session = null; // { questions, index, score, answers }
 
   // --- Estadísticas persistentes (localStorage) ---
   const STATS_KEY = "gh300QuizStats";
+  const GOAL_KEY = "gh300QuizGoal";
+  const MIN_ANSWERS_FOR_READINESS = 20;
+
+  function loadGoal() {
+    const raw = Number(localStorage.getItem(GOAL_KEY));
+    return raw >= 1 && raw <= 100 ? raw : 90;
+  }
+
+  function saveGoal(goal) {
+    localStorage.setItem(GOAL_KEY, String(goal));
+  }
 
   function loadStats() {
     try {
@@ -121,6 +134,32 @@
           return `<div class="session-bar" style="height:${Math.max(sPct, 4)}%" title="${date}: ${s.score}/${s.total} (${sPct}%)"></div>`;
         })
         .join("");
+    }
+
+    renderReadiness(stats.totalAnswered, pct);
+  }
+
+  function renderReadiness(totalAnswered, pct) {
+    const goal = loadGoal();
+    goalInputEl.value = goal;
+
+    readinessBadgeEl.classList.remove("ready", "close", "not-ready", "no-data");
+
+    if (totalAnswered < MIN_ANSWERS_FOR_READINESS) {
+      readinessBadgeEl.classList.add("no-data");
+      readinessBadgeEl.textContent = `Responde al menos ${MIN_ANSWERS_FOR_READINESS} preguntas para estimar tu nivel (llevas ${totalAnswered})`;
+      return;
+    }
+
+    if (pct >= goal) {
+      readinessBadgeEl.classList.add("ready");
+      readinessBadgeEl.textContent = `✅ Listo para el examen (${pct}% ≥ ${goal}%)`;
+    } else if (pct >= goal - 10) {
+      readinessBadgeEl.classList.add("close");
+      readinessBadgeEl.textContent = `⚠️ Casi listo: te faltan ${goal - pct} puntos para tu objetivo`;
+    } else {
+      readinessBadgeEl.classList.add("not-ready");
+      readinessBadgeEl.textContent = `❌ Sigue repasando: ${pct}% frente al objetivo del ${goal}%`;
     }
   }
 
@@ -322,6 +361,11 @@
       localStorage.removeItem(STATS_KEY);
       renderStats();
     }
+  });
+  goalInputEl.addEventListener("change", () => {
+    const goal = Math.min(100, Math.max(1, Number(goalInputEl.value) || 90));
+    saveGoal(goal);
+    renderStats();
   });
 
   populateCategories();

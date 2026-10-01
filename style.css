@@ -328,6 +328,46 @@ select, input[type="number"] {
 .stat-box.correct span { color: var(--correct); }
 .stat-box.wrong span { color: var(--wrong); }
 
+.readiness-card {
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.readiness-goal {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.readiness-goal label { font-size: 0.7rem; color: var(--muted); font-weight: 600; }
+.goal-control { display: flex; align-items: center; gap: 0.3rem; }
+.goal-control input {
+  width: 56px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.9rem;
+}
+.readiness-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.4rem 0.7rem;
+  border-radius: 10px;
+  white-space: normal;
+  border: 1px solid var(--border);
+  width: 100%;
+}
+.readiness-badge.ready { color: var(--correct); border-color: var(--correct); background: rgba(63, 185, 80, 0.12); }
+.readiness-badge.close { color: #d4a72c; border-color: #d4a72c; background: rgba(212, 167, 44, 0.12); }
+.readiness-badge.not-ready { color: var(--wrong); border-color: var(--wrong); background: rgba(248, 81, 73, 0.12); }
+.readiness-badge.no-data { color: var(--muted); }
+
 .category-bars { display: flex; flex-direction: column; gap: 0.6rem; }
 .category-bar-row .label {
   display: flex;
