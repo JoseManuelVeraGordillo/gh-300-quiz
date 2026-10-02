@@ -2651,5 +2651,51 @@ const QUESTIONS = [
     options: ["No; hay que revisar los cambios y restaurar un checkpoint si se necesita revertirlos.", "Sí, siempre revierte todos los archivos y comandos.", "Sí, pero solo si el agente estaba usando el modo Plan.", "No; los cambios no se pueden revisar ni restaurar."],
     correct: [0], confidence: "correct",
     explanation: "Detener una respuesta no deshace las acciones ya completadas; revisa los cambios y usa un checkpoint para restaurar archivos si procede."
+  },
+  // Fundamentos de GitHub Copilot
+  {
+    id: 213,
+    category: "Fundamentos de GitHub Copilot",
+    question: "Si haces clic en el icono de GitHub Copilot Chat en la parte superior derecha de VS Code mientras la ventana principal del chat ya está abierta en el lado derecho del IDE, ¿qué pasará?",
+    type: "single",
+    options: ["Se abrirá la ventana de gestión del copiloto.", "Se abrirá la ventana del chat en línea.", "No pasará nada.", "Se abrirá la ventana de chat rápido."],
+    correct: [3], confidence: "correct",
+    explanation: "Con el chat principal ya abierto en la barra lateral, ese icono abre la ventana de chat rápido."
+  },
+  {
+    id: 214,
+    category: "Fundamentos de GitHub Copilot",
+    question: "¿Cuál es el texto en cursiva que aparece cuando Copilot está activo?",
+    type: "single",
+    options: ["Texto fantasma.", "Brillo.", "Comentarios.", "Siguiente edición."],
+    correct: [0], confidence: "correct",
+    explanation: "Las sugerencias de código que aparecen en el editor se muestran como texto fantasma."
+  },
+  {
+    id: 215,
+    category: "Fundamentos de GitHub Copilot",
+    question: "¿Cuáles de estas funciones están disponibles a través del Editor Interno o del chat en línea?",
+    type: "multiple",
+    options: ["Propagar cambios a varios archivos.", "Código al vuelo.", "Comentarios en tiempo real.", "Añadir una prueba unitaria.", "Cambiar la configuración de un Copilot."],
+    correct: [1, 2, 3], confidence: "correct",
+    explanation: "Las funciones indicadas son código al vuelo, comentarios en tiempo real y ayuda para añadir una prueba unitaria."
+  },
+  {
+    id: 216,
+    category: "Fundamentos de GitHub Copilot",
+    question: "¿Qué pasará si usas la flecha hacia arriba en la ventana principal del chat?",
+    type: "single",
+    options: ["El archivo actual será ahora el contexto para el prompt.", "El último prompt volverá si se usó uno.", "Se abrirá una nueva ventana.", "No pasará nada."],
+    correct: [1], confidence: "correct",
+    explanation: "La flecha hacia arriba recupera el prompt anterior del historial de entrada del chat."
+  },
+  {
+    id: 217,
+    category: "Fundamentos de GitHub Copilot",
+    question: "¿Qué criterios de búsqueda se introducen en la barra de búsqueda de Configuración de VS Code para personalizar GitHub Copilot?",
+    type: "single",
+    options: ["Personalizaciones del copiloto.", "Escenarios.", "GitHub Copilot.", "GitHub."],
+    correct: [2], confidence: "correct",
+    explanation: "Busca “GitHub Copilot” en Configuración para filtrar sus opciones de personalización."
   }
 ];

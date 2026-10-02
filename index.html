@@ -72,6 +72,7 @@
   <main id="app">
     <section id="setup-screen" class="screen">
       <h2>Configura tu repaso</h2>
+      <button id="study-open-btn" class="secondary-btn study-open-btn">Abrir guía de estudio</button>
 
       <div class="field">
         <label for="category-select">Categoría</label>
@@ -98,6 +99,216 @@
       </div>
 
       <button id="start-btn" class="primary-btn">Empezar quiz</button>
+    </section>
+
+    <section id="study-screen" class="screen hidden">
+      <div class="study-heading">
+        <div>
+          <span class="study-kicker">GUÍA DE ESTUDIO · GH-300</span>
+          <h2>Empezando con GitHub Copilot</h2>
+          <p class="study-lead">Copilot acelera tareas de desarrollo, pero sus sugerencias necesitan contexto, revisión y validación humana.</p>
+        </div>
+        <button id="study-back-btn" class="secondary-btn">Volver al quiz</button>
+      </div>
+
+      <div class="study-tabs" role="tablist" aria-label="Temas de estudio">
+        <button id="study-tab-intro" class="study-tab active" type="button" role="tab" aria-selected="true" aria-controls="study-guide-intro">Empezando con Copilot</button>
+        <button id="study-tab-privacy" class="study-tab" type="button" role="tab" aria-selected="false" aria-controls="study-guide-privacy">Fundamentos de privacidad</button>
+      </div>
+
+      <div id="study-guide-intro" class="study-guide" role="tabpanel" aria-labelledby="study-tab-intro">
+      <section class="study-summary" aria-labelledby="study-summary-title">
+        <h3 id="study-summary-title">La idea central</h3>
+        <p>GitHub Copilot es un asistente de programación con IA integrado en el flujo de desarrollo. Puede proponer código, responder preguntas, explicar o refactorizar fragmentos y ayudar con pruebas y documentación. No conoce por completo tus requisitos ni sustituye el criterio del desarrollador: revisa cada resultado antes de incorporarlo.</p>
+      </section>
+
+      <div class="study-sections">
+        <section class="study-section">
+          <span class="study-number">01</span>
+          <div>
+            <h3>Formas de trabajar</h3>
+            <ul>
+              <li><strong>Sugerencias en el editor:</strong> aparecen como texto fantasma mientras escribes; acepta solo lo que te sirva.</li>
+              <li><strong>Chat:</strong> permite preguntar, explorar código y pedir ayuda con tareas del proyecto.</li>
+              <li><strong>Chat en línea:</strong> trabaja sobre el código seleccionado para explicar o proponer una edición concreta.</li>
+              <li>Los comentarios, el código abierto y la documentación aportan contexto a las sugerencias.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="study-section">
+          <span class="study-number">02</span>
+          <div>
+            <h3>Capacidades y límites</h3>
+            <ul>
+              <li><strong>Puede ayudar a:</strong> completar o generar código, explicar, refactorizar, proponer pruebas y revisar posibles mejoras.</li>
+              <li><strong>No garantiza:</strong> que el código sea correcto, completo, seguro, eficiente o adecuado a la lógica de negocio.</li>
+              <li>Puede ignorar contexto importante, proponer patrones obsoletos o inseguros y rendir peor en tecnologías poco comunes.</li>
+              <li>Trátalo como asistente colaborativo, no como piloto automático ni sustituto de una revisión técnica.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="study-section">
+          <span class="study-number">03</span>
+          <div>
+            <h3>Riesgos y uso responsable</h3>
+            <p>Estudia los seis principios de IA responsable:</p>
+            <ul class="principle-list">
+              <li>Equidad</li>
+              <li>Fiabilidad y seguridad</li>
+              <li>Privacidad y confianza</li>
+              <li>Inclusión</li>
+              <li>Transparencia</li>
+              <li>Responsabilidad</li>
+            </ul>
+            <p>Ten presentes el sesgo, las vulnerabilidades, los secretos expuestos y las cuestiones de licencias o propiedad intelectual. La persona que integra el código sigue siendo responsable de revisarlo.</p>
+          </div>
+        </section>
+
+        <section class="study-section">
+          <span class="study-number">04</span>
+          <div>
+            <h3>Validar antes de integrar</h3>
+            <ul>
+              <li>Revisa lógica, requisitos, seguridad, rendimiento y licencias; busca credenciales o secretos.</li>
+              <li>Ejecuta pruebas unitarias y de integración; define casos esperados antes de generar código cuando sea posible.</li>
+              <li>Aplica análisis estático y linters; considera fuzzing y escáneres de seguridad.</li>
+              <li>Observa registros y comportamiento en ejecución después del despliegue.</li>
+              <li>Usa control de versiones para revisar diferencias y volver a una versión anterior si es necesario.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="study-section">
+          <span class="study-number">05</span>
+          <div>
+            <h3>Mejorar las sugerencias</h3>
+            <ul>
+              <li>Escribe instrucciones específicas e incluye objetivo, contexto, restricciones y ejemplos de estilo.</li>
+              <li>Refina el prompt de forma iterativa si la primera respuesta no cumple lo que necesitas.</li>
+              <li>Mantén el código y la documentación claros; los archivos enfocados facilitan aportar contexto relevante.</li>
+              <li>Revisa las dependencias externas y aplica las normas del proyecto y del equipo.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="study-section">
+          <span class="study-number">06</span>
+          <div>
+            <h3>Instalación y solución de problemas</h3>
+            <ul>
+              <li>Instala VS Code y la extensión oficial de GitHub Copilot; inicia sesión con una cuenta que tenga acceso.</li>
+              <li>Si no conecta, comprueba Internet, proxy, red y posibles restricciones corporativas.</li>
+              <li>Si falla la autenticación, vuelve a iniciar sesión o renueva la autorización.</li>
+              <li>Si faltan archivos en el contexto, revisa exclusiones de Copilot, políticas y configuraciones del repositorio.</li>
+              <li>Actualiza VS Code y las extensiones, comprueba el acceso al plan y consulta los registros o límites de uso.</li>
+            </ul>
+            <p class="study-caveat">La interfaz y los pasos cambian entre versiones. Confirma los detalles en la documentación vigente de GitHub y VS Code.</p>
+          </div>
+        </section>
+      </div>
+
+      <aside class="study-exam-focus">
+        <h3>Para responder preguntas</h3>
+        <p>Recuerda la diferencia entre sugerir y garantizar: Copilot propone; el desarrollador verifica. Relaciona cada riesgo con una mitigación y memoriza los seis principios de IA responsable.</p>
+      </aside>
+
+      <button id="study-quiz-btn" class="primary-btn study-quiz-btn">Practicar estas preguntas</button>
+      </div>
+
+      <div id="study-guide-privacy" class="study-guide hidden" role="tabpanel" aria-labelledby="study-tab-privacy" hidden>
+        <section class="study-summary" aria-labelledby="privacy-summary-title">
+          <h3 id="privacy-summary-title">La idea central</h3>
+          <p>La privacidad de Copilot depende de una combinación de plan, configuración personal, políticas de la organización y contexto compartido con el editor. Protege los datos sensibles antes de pedir ayuda y revisa las sugerencias: los filtros y las exclusiones reducen riesgos, pero no sustituyen la seguridad del repositorio ni el criterio humano.</p>
+        </section>
+
+        <div class="study-sections">
+          <section class="study-section">
+            <span class="study-number">01</span>
+            <div>
+              <h3>Planes y tratamiento de datos</h3>
+              <ul>
+                <li>El material distingue planes individuales (Free, Pro y Pro+) y organizativos (Business y Enterprise); las funciones y controles varían entre planes.</li>
+                <li>En cuentas individuales, revisa los controles de sugerencias que coinciden con código público y las opciones de uso de datos para entrenamiento.</li>
+                <li>En organizaciones puede haber políticas y administración centralizadas sobre modelos, datos y acceso.</li>
+                <li>No infieras el uso o retención de datos solo por el nombre del plan: consulta los ajustes de tu cuenta, el contrato y la política vigentes.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">02</span>
+            <div>
+              <h3>Configuración e instrucciones</h3>
+              <ul>
+                <li>El editor puede permitir habilitar o deshabilitar Copilot en general o por lenguaje; una opción específica puede prevalecer sobre la general.</li>
+                <li>Los ajustes del usuario, del espacio de trabajo y las políticas de organización pueden tener distinto alcance o prioridad.</li>
+                <li>Las instrucciones del repositorio orientan el estilo y el contexto de las respuestas; no equivalen a una política de privacidad ni a una exclusión de contenido.</li>
+                <li>Comprueba el nombre y la ubicación de cada ajuste en la documentación de la versión que utilizas.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">03</span>
+            <div>
+              <h3>Exclusiones de contenido</h3>
+              <ul>
+                <li>Las exclusiones buscan impedir que rutas o archivos seleccionados se usen como contexto para sugerencias.</li>
+                <li>Úsalas para reducir la exposición de secretos, credenciales, datos personales y código confidencial; evita compartirlos directamente en prompts.</li>
+                <li>La configuración disponible y quién puede administrarla dependen del producto, el plan y las políticas de la organización.</li>
+                <li>Las referencias desde archivos permitidos, enlaces simbólicos, perfiles o contextos remotos pueden complicar el alcance: valida la configuración y sus límites.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">04</span>
+            <div>
+              <h3>Propiedad intelectual y contratos</h3>
+              <ul>
+                <li>Que una sugerencia sea generada por IA no elimina la obligación de comprobar licencias, derechos de terceros y normas aplicables.</li>
+                <li>Los filtros de coincidencia con código público pueden reducir ciertos riesgos; no garantizan que una sugerencia esté libre de reclamaciones.</li>
+                <li>Las garantías, indemnizaciones y responsabilidades dependen del plan, los términos aplicables y el uso de los controles requeridos.</li>
+                <li>Antes de aceptar una protección contractual como garantía, consulta el contrato vigente o al equipo legal.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">05</span>
+            <div>
+              <h3>Controles de seguridad</h3>
+              <ul>
+                <li>El filtro de coincidencias con código público trata coincidencias públicas; no debe confundirse con un análisis de duplicados del código privado de tu organización.</li>
+                <li>Copilot no reemplaza las herramientas de seguridad del repositorio. Complementa el flujo con revisión, pruebas y análisis estático.</li>
+                <li>Dependabot ayuda a gestionar dependencias vulnerables; code scanning busca vulnerabilidades en el código y secret scanning detecta secretos expuestos, según la configuración y el plan.</li>
+                <li>Configura permisos y políticas organizativas con el principio de menor privilegio.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">06</span>
+            <div>
+              <h3>Diagnóstico de exclusiones y sugerencias</h3>
+              <ul>
+                <li>Comprueba si Copilot está habilitado para el lenguaje y el ámbito correctos; revisa también las políticas y el acceso al plan.</li>
+                <li>Verifica exclusiones en el perfil, el espacio de trabajo o el contexto remoto donde realmente trabajas; revisa errores y registros.</li>
+                <li>Tras cambiar ajustes, actualiza o reinicia el editor y las extensiones si la documentación lo recomienda.</li>
+                <li>Si una sugerencia parece insegura, incorrecta o basada en contenido excluido, no la aceptes: conserva el contexto necesario para investigar sin exponer datos sensibles.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <aside class="study-exam-focus">
+          <h3>Para responder preguntas</h3>
+          <p>Distingue el filtro de código público de las exclusiones de contenido; separa instrucciones del editor de controles de privacidad; y recuerda que Copilot no detecta duplicados internos ni ofrece garantías legales automáticas.</p>
+        </aside>
+        <p class="study-caveat">Planes, políticas de datos, nombres de ajustes y mecanismos de exclusión cambian con el tiempo. Contrasta los detalles concretos con la documentación y los términos actuales de GitHub Copilot.</p>
+      </div>
     </section>
 
     <section id="quiz-screen" class="screen hidden">

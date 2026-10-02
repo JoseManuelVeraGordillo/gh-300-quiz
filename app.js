@@ -1,6 +1,7 @@
 // App de repaso GH-300: lee QUESTIONS (data/questions.js) y gestiona el flujo del quiz.
 (() => {
   const setupScreen = document.getElementById("setup-screen");
+  const studyScreen = document.getElementById("study-screen");
   const quizScreen = document.getElementById("quiz-screen");
   const resultScreen = document.getElementById("result-screen");
 
@@ -9,6 +10,11 @@
   const shuffleOptionsCheckbox = document.getElementById("shuffle-options");
   const onlyConfirmedCheckbox = document.getElementById("only-confirmed");
   const startBtn = document.getElementById("start-btn");
+  const studyOpenBtn = document.getElementById("study-open-btn");
+  const studyBackBtn = document.getElementById("study-back-btn");
+  const studyQuizBtn = document.getElementById("study-quiz-btn");
+  const studyTabs = [...document.querySelectorAll(".study-tab")];
+  const studyGuides = [...document.querySelectorAll(".study-guide")];
 
   const progressLabel = document.getElementById("progress-label");
   const progressFill = document.getElementById("progress-fill");
@@ -221,9 +227,37 @@
     }
     session = { questions, index: 0, score: 0, answers: [] };
     setupScreen.classList.add("hidden");
+    studyScreen.classList.add("hidden");
     resultScreen.classList.add("hidden");
     quizScreen.classList.remove("hidden");
     renderQuestion();
+  }
+
+  function openStudyGuide() {
+    setupScreen.classList.add("hidden");
+    studyScreen.classList.remove("hidden");
+  }
+
+  function selectStudyGuide(guideId) {
+    studyGuides.forEach((guide) => {
+      const selected = guide.id === guideId;
+      guide.hidden = !selected;
+      guide.classList.toggle("hidden", !selected);
+    });
+
+    studyTabs.forEach((tab) => {
+      const selected = tab.getAttribute("aria-controls") === guideId;
+      tab.classList.toggle("active", selected);
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
+  }
+
+  function startStudyQuiz() {
+    categorySelect.value = "Fundamentos de GitHub Copilot";
+    questionCountInput.value = "5";
+    onlyConfirmedCheckbox.checked = false;
+    startQuiz();
   }
 
   function renderQuestion() {
@@ -342,6 +376,26 @@
   }
 
   startBtn.addEventListener("click", startQuiz);
+  studyOpenBtn.addEventListener("click", openStudyGuide);
+  studyBackBtn.addEventListener("click", () => {
+    studyScreen.classList.add("hidden");
+    setupScreen.classList.remove("hidden");
+  });
+  studyTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectStudyGuide(tab.getAttribute("aria-controls")));
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const nextIndex = event.key === "Home"
+        ? 0
+        : event.key === "End"
+          ? studyTabs.length - 1
+          : (index + (event.key === "ArrowRight" ? 1 : -1) + studyTabs.length) % studyTabs.length;
+      studyTabs[nextIndex].click();
+      studyTabs[nextIndex].focus();
+    });
+  });
+  studyQuizBtn.addEventListener("click", startStudyQuiz);
   checkBtn.addEventListener("click", checkAnswer);
   nextBtn.addEventListener("click", nextQuestion);
   quitBtn.addEventListener("click", quitQuiz);
