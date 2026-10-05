@@ -105,8 +105,8 @@
       <div class="study-heading">
         <div>
           <span class="study-kicker">GUÍA DE ESTUDIO · GH-300</span>
-          <h2>Empezando con GitHub Copilot</h2>
-          <p class="study-lead">Copilot acelera tareas de desarrollo, pero sus sugerencias necesitan contexto, revisión y validación humana.</p>
+          <h2>Guías de estudio GH-300</h2>
+          <p class="study-lead">Resúmenes temáticos para reforzar conceptos, límites y buenas prácticas del examen.</p>
         </div>
         <button id="study-back-btn" class="secondary-btn">Volver al quiz</button>
       </div>
@@ -114,6 +114,12 @@
       <div class="study-tabs" role="tablist" aria-label="Temas de estudio">
         <button id="study-tab-intro" class="study-tab active" type="button" role="tab" aria-selected="true" aria-controls="study-guide-intro">Empezando con Copilot</button>
         <button id="study-tab-privacy" class="study-tab" type="button" role="tab" aria-selected="false" aria-controls="study-guide-privacy">Fundamentos de privacidad</button>
+        <button id="study-tab-tests" class="study-tab" type="button" role="tab" aria-selected="false" aria-controls="study-guide-tests">Pruebas de Copilot</button>
+        <button id="study-tab-plans" class="study-tab" type="button" role="tab" aria-selected="false" aria-controls="study-guide-plans">Planes de suscripción</button>
+        <button id="study-tab-chat-cli" class="study-tab" type="button" role="tab" aria-selected="false" aria-controls="study-guide-chat-cli">Chat y CLI</button>
+        <button id="study-tab-data" class="study-tab" type="button" role="tab" aria-selected="false" aria-controls="study-guide-data">Uso de datos</button>
+        <button id="study-tab-prompting" class="study-tab" type="button" role="tab" aria-selected="false" aria-controls="study-guide-prompting">Prompting</button>
+        <button id="study-tab-use-cases" class="study-tab" type="button" role="tab" aria-selected="false" aria-controls="study-guide-use-cases">Casos de uso</button>
       </div>
 
       <div id="study-guide-intro" class="study-guide" role="tabpanel" aria-labelledby="study-tab-intro">
@@ -308,6 +314,602 @@
           <p>Distingue el filtro de código público de las exclusiones de contenido; separa instrucciones del editor de controles de privacidad; y recuerda que Copilot no detecta duplicados internos ni ofrece garantías legales automáticas.</p>
         </aside>
         <p class="study-caveat">Planes, políticas de datos, nombres de ajustes y mecanismos de exclusión cambian con el tiempo. Contrasta los detalles concretos con la documentación y los términos actuales de GitHub Copilot.</p>
+        <button id="study-privacy-quiz-btn" class="primary-btn study-quiz-btn">Practicar estas preguntas</button>
+      </div>
+
+      <div id="study-guide-tests" class="study-guide hidden" role="tabpanel" aria-labelledby="study-tab-tests" hidden>
+        <section class="study-summary" aria-labelledby="tests-summary-title">
+          <h3 id="tests-summary-title">La idea central</h3>
+          <p>GitHub Copilot puede acelerar la creación y mejora de pruebas, desde el esqueleto inicial hasta los casos límite y las aserciones. La cobertura generada no garantiza que una prueba sea correcta ni que compruebe el comportamiento esperado: revisa el diseño, ejecuta la suite y valida que falle cuando el código falla.</p>
+        </section>
+
+        <div class="study-sections">
+          <section class="study-section">
+            <span class="study-number">01</span>
+            <div>
+              <h3>Suites y tipos de prueba</h3>
+              <ul>
+                <li>Pide pruebas unitarias para unidades aisladas e integración para comprobar cómo colaboran varios componentes.</li>
+                <li>Según el proyecto, también puedes trabajar con pruebas de componentes y end-to-end; usa frameworks estándar del stack.</li>
+                <li>Da contexto sobre el comportamiento esperado, las herramientas existentes y los comandos del proyecto antes de pedir cambios.</li>
+                <li>Revisa dependencias, configuración y comandos que Copilot proponga instalar o ejecutar.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">02</span>
+            <div>
+              <h3>Casos límite</h3>
+              <ul>
+                <li>Solicita escenarios de límites, entradas vacías o inválidas, espacios, valores extremos, errores y combinaciones inusuales.</li>
+                <li>Contrasta cada caso con los requisitos: más pruebas no siempre significa mejor cobertura.</li>
+                <li>Comprueba que los casos detecten defectos reales y que no dependan de detalles internos innecesarios.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">03</span>
+            <div>
+              <h3>Boilerplate y estructura</h3>
+              <ul>
+                <li>Copilot puede proponer configuración del framework, archivos de prueba, datos de prueba, mocks y scripts.</li>
+                <li>Revisa y acepta cambios de forma consciente; ejecuta los comandos y comprueba que las pruebas realmente corran.</li>
+                <li>Adapta el esqueleto al proyecto en vez de añadir herramientas o dependencias sin necesidad.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">04</span>
+            <div>
+              <h3>Aserciones precisas</h3>
+              <ul>
+                <li>Una aserción debe expresar un resultado observable que se desprenda del requisito: salida, estado, error o interacción.</li>
+                <li>Usa Arrange, Act, Assert para preparar el escenario, ejecutar la acción y verificar el resultado.</li>
+                <li>Incluye resultados positivos y negativos cuando proceda; evita pruebas que siempre pasan o que solo repiten la implementación.</li>
+                <li>Mocks y stubs aíslan dependencias, pero verifica que no oculten el comportamiento que querías probar.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">05</span>
+            <div>
+              <h3>Patrones y calidad</h3>
+              <ul>
+                <li>Conoce la pirámide de pruebas: unitarias, integración y end-to-end; el equilibrio depende del sistema.</li>
+                <li>Otros enfoques incluyen pruebas de componentes, regresión, rendimiento, seguridad y accesibilidad.</li>
+                <li>Patrones de automatización comunes: Arrange-Act-Assert, mocks/stubs y Page Object Model para interfaces web.</li>
+                <li>Pide a Copilot que explique o revise pruebas existentes, y comprueba legibilidad, mantenimiento y falsos positivos.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">06</span>
+            <div>
+              <h3>Revisión colaborativa</h3>
+              <ul>
+                <li>Las instrucciones compartidas del proyecto pueden ayudar a mantener convenciones de nombres, estructura y herramientas de prueba.</li>
+                <li>La revisión por pares detecta huecos, aserciones débiles y supuestos que el autor o la IA pasaron por alto.</li>
+                <li>Copilot puede explicar, refactorizar y documentar tests; el equipo sigue siendo responsable de los estándares y la aprobación.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">07</span>
+            <div>
+              <h3>Pruebas de seguridad</h3>
+              <ul>
+                <li>Pide revisar riesgos como inyección SQL, XSS, credenciales expuestas y uso de APIs inseguras; valida las propuestas con análisis y pruebas.</li>
+                <li>Las consultas parametrizadas separan datos de la estructura SQL; al insertar texto no confiable en el DOM, evita tratarlo como HTML ejecutable.</li>
+                <li>Code scanning, Dependabot y secret scanning complementan las pruebas; Copilot no reemplaza estas herramientas ni una revisión de seguridad.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">08</span>
+            <div>
+              <h3>Rendimiento y testabilidad</h3>
+              <ul>
+                <li>Pide identificar posibles cuellos de botella, pero mide antes y después con datos representativos.</li>
+                <li>El ejemplo del curso contrasta búsquedas repetidas con <code>indexOf</code> (O(n²)) con un <code>Set</code> (O(n) promedio) para eliminar duplicados.</li>
+                <li>Funciones pequeñas y dependencias inyectables facilitan pruebas aisladas; la testabilidad puede ayudar al diseño, pero no garantiza por sí sola mejor rendimiento.</li>
+                <li>Comprueba que una optimización conserve el comportamiento mediante pruebas de regresión.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <aside class="study-exam-focus">
+          <h3>Para responder preguntas</h3>
+          <p>Copilot ayuda a generar suites, boilerplate, aserciones y casos límite. El desarrollador debe revisar la intención, ejecutar las pruebas y verificar seguridad y rendimiento; las sugerencias no sustituyen la validación.</p>
+        </aside>
+        <button id="study-tests-quiz-btn" class="primary-btn study-quiz-btn">Practicar estas preguntas</button>
+      </div>
+
+      <div id="study-guide-plans" class="study-guide hidden" role="tabpanel" aria-labelledby="study-tab-plans" hidden>
+        <section class="study-summary" aria-labelledby="plans-summary-title">
+          <h3 id="plans-summary-title">La idea central</h3>
+          <p>Elige el plan según el uso individual o la necesidad de administrar Copilot en una organización. Free, Pro y Pro+ se orientan a desarrolladores individuales; Business añade administración y políticas de equipo; Enterprise amplía los controles y el contexto organizativo. Las funciones y los límites cambian con el tiempo.</p>
+        </section>
+
+        <div class="study-sections">
+          <section class="study-section">
+            <span class="study-number">01</span>
+            <div>
+              <h3>Planes individuales</h3>
+              <ul>
+                <li><strong>Free:</strong> permite probar Copilot o usarlo ocasionalmente, con límites de uso incluidos.</li>
+                <li><strong>Pro:</strong> para desarrolladores que lo usan con frecuencia y necesitan más capacidad, modelos y solicitudes premium.</li>
+                <li><strong>Pro+:</strong> para uso intensivo que requiere una cuota mayor de solicitudes premium y acceso ampliado a modelos.</li>
+                <li>El curso cita como referencia 2.000 completaciones y 50 solicitudes de chat mensuales para Free, 300 solicitudes premium para Pro y 1.500 para Pro+. Verifica las cuotas actuales antes de tomar una decisión.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">02</span>
+            <div>
+              <h3>Business para equipos</h3>
+              <ul>
+                <li>Está diseñado para organizaciones que necesitan gestionar licencias y acceso de forma centralizada.</li>
+                <li>Permite administrar políticas organizativas y establecer controles compartidos para los equipos.</li>
+                <li>El material del curso también destaca la indemnización de propiedad intelectual, las exclusiones de contenido y los registros de auditoría, sujetos al plan y a los términos aplicables.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">03</span>
+            <div>
+              <h3>Enterprise para organizaciones grandes</h3>
+              <ul>
+                <li>Se orienta a organizaciones que necesitan administración a escala empresarial, controles adicionales y opciones avanzadas de personalización.</li>
+                <li>El curso resalta la gestión jerárquica de políticas y acceso, y los informes de uso y auditoría.</li>
+                <li>La integración con repositorios y conocimiento interno puede aportar contexto organizativo a Copilot, según las funciones disponibles en el plan vigente.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">04</span>
+            <div>
+              <h3>Exclusiones y auditoría</h3>
+              <ul>
+                <li>Las exclusiones de contenido permiten indicar rutas que Copilot no debe usar como contexto, por ejemplo archivos sensibles.</li>
+                <li>Configúralas en el ámbito correcto (usuario, organización o repositorio, según corresponda) y verifica su efecto; no compartas secretos en prompts.</li>
+                <li>Los registros de auditoría ayudan a revisar actividad y apoyar necesidades de cumplimiento; el curso muestra su exportación a CSV o JSON.</li>
+                <li>Las API de administración pueden automatizar tareas, pero sus permisos y disponibilidad dependen del plan; el curso advierte que algunas operaciones mostradas eran experimentales.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">05</span>
+            <div>
+              <h3>Bases de conocimiento</h3>
+              <ul>
+                <li>Una base de conocimiento organiza repositorios para ofrecer a Copilot contexto reutilizable sobre el código y las convenciones internas.</li>
+                <li>El flujo del curso crea la base desde la configuración de Copilot de la organización, añade repositorios y espera a que se indexen.</li>
+                <li>Comprueba qué planes, repositorios y opciones de indexación admite actualmente tu organización antes de diseñar una implementación.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">06</span>
+            <div>
+              <h3>Cómo elegir</h3>
+              <ul>
+                <li>Uso ocasional o evaluación: compara primero las cuotas de Free.</li>
+                <li>Desarrollo individual frecuente: valora Pro; para un uso premium intensivo, compara Pro+.</li>
+                <li>Equipo que requiere licencias y políticas centralizadas: evalúa Business.</li>
+                <li>Organización con gobernanza amplia y contexto de repositorios internos: evalúa Enterprise.</li>
+                <li>Considera también las políticas de datos, seguridad, cumplimiento, soporte y coste total.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <aside class="study-exam-focus">
+          <h3>Para responder preguntas</h3>
+          <p>Asocia Free, Pro y Pro+ con el uso individual y sus distintos niveles de capacidad; Business con la administración de equipos; y Enterprise con controles y contexto organizativo avanzados. No confundas una cuota citada en el curso con un límite vigente.</p>
+        </aside>
+        <p class="study-caveat">Los nombres, precios, cuotas, funciones, políticas y API de GitHub Copilot evolucionan. Este resumen sigue el material del curso; confirma los detalles actuales en la documentación y configuración oficial de GitHub.</p>
+        <button id="study-plans-quiz-btn" class="primary-btn study-quiz-btn">Practicar estas preguntas</button>
+      </div>
+
+      <div id="study-guide-chat-cli" class="study-guide hidden" role="tabpanel" aria-labelledby="study-tab-chat-cli" hidden>
+        <section class="study-summary" aria-labelledby="chat-cli-summary-title">
+          <h3 id="chat-cli-summary-title">La idea central</h3>
+          <p>Copilot Chat permite resolver dudas, crear o revisar código y recibir orientación contextual dentro del entorno de desarrollo. Copilot CLI lleva la asistencia al terminal. En ambos casos, aporta contexto claro, revisa lo que propone y valida los cambios antes de integrarlos o ejecutar comandos.</p>
+        </section>
+
+        <div class="study-sections">
+          <section class="study-section">
+            <span class="study-number">01</span>
+            <div>
+              <h3>Casos de uso de Chat (Chat use cases)</h3>
+              <ul>
+                <li><strong>Iniciar proyectos (project scaffolding):</strong> pedir una estructura inicial y archivos de configuración para el stack elegido.</li>
+                <li><strong>Crear y completar archivos (file creation and population):</strong> especificar formato, campos, ejemplos y restricciones, y revisar el resultado antes de aplicarlo.</li>
+                <li><strong>Obtener orientación de implementación (implementation guidance):</strong> consultar cómo implementar una tarea, qué herramientas usar y qué pasos validar.</li>
+                <li>Puede generar datos de muestra (sample data), por ejemplo un archivo JSON, y ayudar a configurar un servidor simulado (mock server).</li>
+                <li>El contexto de los archivos abiertos o seleccionados ayuda a adaptar la respuesta al proyecto.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">02</span>
+            <div>
+              <h3>Instrucciones del repositorio (repository instructions) y calidad de respuesta</h3>
+              <ul>
+                <li>El archivo de instrucciones de Copilot (Copilot instructions file), <code>.github/copilot-instructions.md</code>, puede comunicar convenciones compartidas del repositorio, como estilo, pruebas, documentación y manejo de errores.</li>
+                <li>Especifica objetivo, contexto, restricciones y casos límite; refina el prompt si la respuesta es incompleta.</li>
+                <li>Copilot puede omitir validaciones o escenarios no solicitados explícitamente. Pide que considere entradas inválidas y otros casos límite cuando corresponda.</li>
+                <li>Las instrucciones orientan la generación, pero no garantizan que la salida cumpla los requisitos.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">03</span>
+            <div>
+              <h3>Revisión de código (code review) y feedback</h3>
+              <ul>
+                <li>Selecciona el código pertinente (code selection) y pide una revisión para detectar defectos, problemas de legibilidad o diferencias con las convenciones del proyecto.</li>
+                <li>Evalúa cada sugerencia por separado: aplica las útiles y descarta las que no representan la intención del equipo.</li>
+                <li>Revisa especialmente cambios funcionales y de seguridad; ejecuta pruebas y herramientas del proyecto antes de integrar.</li>
+                <li>El feedback efectivo consiste en indicar qué falta o qué no encaja y aportar el contexto necesario para una nueva iteración.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">04</span>
+            <div>
+              <h3>Comandos de barra (slash commands)</h3>
+              <ul>
+                <li><code>/explain</code> pide explicar el código o la selección.</li>
+                <li><code>/fix</code> solicita analizar y proponer una corrección.</li>
+                <li><code>/tests</code> ayuda a generar pruebas; <code>/doc</code> propone documentación.</li>
+                <li><code>/edit</code> y <code>/generate</code> ayudan a modificar o crear código, según el contexto.</li>
+                <li>Escribe <code>/</code> en el chat para ver los comandos disponibles en tu versión; las opciones dependen de la superficie y del producto.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">05</span>
+            <div>
+              <h3>Copilot CLI (command-line interface)</h3>
+              <ul>
+                <li>La CLI permite solicitar ayuda desde el terminal para tareas relacionadas con el desarrollo y GitHub, sin cambiar de aplicación.</li>
+                <li>El curso muestra la autenticación con GitHub CLI y una extensión de Copilot; ese flujo puede haber cambiado. Sigue la guía oficial vigente para instalar y autenticar la CLI disponible en tu entorno.</li>
+                <li>Antes de ejecutar una propuesta, inspecciona el comando, la carpeta de trabajo, los permisos y sus posibles efectos; confirma cualquier operación que modifique o elimine datos.</li>
+                <li>No incluyas tokens, contraseñas ni otros secretos en prompts o comandos compartidos.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <aside class="study-exam-focus">
+          <h3>Para responder preguntas</h3>
+          <p>Chat sirve para crear, explicar, editar y revisar con contexto; las instrucciones del repositorio ayudan a mantener convenciones; los comandos de barra agilizan tareas comunes; y la CLI acerca la asistencia al terminal. En todos los casos, el desarrollador revisa, prueba y decide.</p>
+        </aside>
+        <p class="study-caveat">Los nombres y la disponibilidad de comandos, extensiones y métodos de instalación pueden variar entre versiones. Consulta la documentación oficial actual antes de configurar Copilot CLI.</p>
+        <button id="study-chat-cli-quiz-btn" class="primary-btn study-quiz-btn">Practicar estas preguntas</button>
+      </div>
+
+      <div id="study-guide-data" class="study-guide hidden" role="tabpanel" aria-labelledby="study-tab-data" hidden>
+        <section class="study-summary" aria-labelledby="data-summary-title">
+          <h3 id="data-summary-title">La idea central</h3>
+          <p>Copilot combina la solicitud con contexto de desarrollo para generar una respuesta. Para estudiar el flujo, recuerda: el IDE recopila contexto, se construye el prompt, un proxy aplica filtros, el modelo genera una respuesta y se revisa antes de mostrarla. El tratamiento real de datos depende del producto, plan, configuración y políticas vigentes.</p>
+        </section>
+
+        <div class="study-sections">
+          <section class="study-section">
+            <span class="study-number">01</span>
+            <div>
+              <h3>Tipos de datos (data types)</h3>
+              <ul>
+                <li><strong>Datos de interacción (engagement data):</strong> actividad de uso y señales sobre sugerencias aceptadas o rechazadas, según la configuración aplicable.</li>
+                <li><strong>Prompts (prompts):</strong> consultas que envías y el contexto que las acompaña, que puede incluir fragmentos o nombres del código.</li>
+                <li><strong>Sugerencias (suggestions):</strong> código o explicaciones generadas por Copilot en respuesta.</li>
+                <li><strong>Feedback (feedback):</strong> reacciones y comentarios que el usuario decide enviar sobre las respuestas.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">02</span>
+            <div>
+              <h3>Completado de código y chat (code completion vs. chat)</h3>
+              <ul>
+                <li>En el completado, la extensión del IDE usa el archivo y el entorno de edición para inferir qué código podría venir a continuación.</li>
+                <li>En Chat, el prompt suele ser una pregunta o instrucción explícita y puede incluir referencias o contexto adicional.</li>
+                <li>Ambos flujos pueden incorporar contexto, pasar por servicios de procesamiento y devolver una sugerencia al entorno de desarrollo.</li>
+                <li>Cada interacción puede consumir cuota según el plan y el producto; revisa los límites actuales de tu cuenta.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">03</span>
+            <div>
+              <h3>Fuentes de contexto (context sources)</h3>
+              <ul>
+                <li>Archivo actual (current file), código resaltado (selected code) y otros archivos abiertos o relacionados.</li>
+                <li>Estructura del espacio de trabajo (workspace), referencias del repositorio y el historial pertinente de la conversación.</li>
+                <li>Según las funciones disponibles, puedes adjuntar contexto mediante referencias como <code>@</code> o <code>#</code>, instrucciones del repositorio o fuentes conectadas.</li>
+                <li>Aporta solo contexto necesario y autorizado; no incluyas secretos ni información sensible sin aprobación.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">04</span>
+            <div>
+              <h3>Construcción del prompt (prompt construction)</h3>
+              <ul>
+                <li>El sistema combina la petición con información contextual y la organiza para el modelo.</li>
+                <li>La solicitud puede pasar por filtros de contenido y controles de seguridad antes de llegar al modelo de lenguaje grande (large language model, LLM).</li>
+                <li>Escribir una petición específica y elegir contexto relevante reduce ambigüedad y ruido.</li>
+                <li>Los detalles de infraestructura, filtros y políticas pueden variar; estudia el diagrama del curso como modelo conceptual, no como contrato técnico inmutable.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">05</span>
+            <div>
+              <h3>Ciclo de vida de una sugerencia (suggestion lifecycle)</h3>
+              <ol>
+                <li>El IDE aporta contexto (IDE provides context).</li>
+                <li>Se construye el prompt (prompt is constructed).</li>
+                <li>El proxy filtra o sanitiza el prompt (proxy filters the prompt).</li>
+                <li>El LLM formula una sugerencia (LLM generates a suggestion).</li>
+                <li>La respuesta pasa por controles de seguridad y calidad (response is checked).</li>
+                <li>La sugerencia se presenta en el IDE (suggestion appears in the IDE).</li>
+              </ol>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">06</span>
+            <div>
+              <h3>Cómo genera texto el modelo (response generation)</h3>
+              <ul>
+                <li><strong>Tokenización (tokenization):</strong> divide la entrada en unidades que el modelo puede procesar; no siempre coinciden con palabras completas.</li>
+                <li><strong>Incrustaciones (embeddings):</strong> representan tokens como valores numéricos que capturan relaciones aprendidas.</li>
+                <li><strong>Predicción probabilística (probabilistic prediction):</strong> el modelo estima qué token puede seguir según la entrada y el contexto.</li>
+                <li>La respuesta se genera progresivamente; el resultado es una predicción del modelo, no una garantía de exactitud.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <aside class="study-exam-focus">
+          <h3>Para responder preguntas</h3>
+          <p>Distingue prompt (entrada) de sugerencia (respuesta); identifica como contexto el archivo actual, el código seleccionado y el espacio de trabajo; y memoriza la secuencia IDE → prompt → proxy → LLM → revisión de respuesta → IDE.</p>
+        </aside>
+        <p class="study-caveat">Las afirmaciones del curso sobre retención, ubicación de datos, modelos, filtros y subprocesadores pueden quedar desactualizadas. Para decisiones de privacidad, consulta la documentación, configuración y términos actuales del plan.</p>
+        <button id="study-data-quiz-btn" class="primary-btn study-quiz-btn">Practicar estas preguntas</button>
+      </div>
+
+      <div id="study-guide-prompting" class="study-guide hidden" role="tabpanel" aria-labelledby="study-tab-prompting" hidden>
+        <section class="study-summary" aria-labelledby="prompting-summary-title">
+          <h3 id="prompting-summary-title">La idea central</h3>
+          <p>La ingeniería de prompts (prompt engineering) consiste en expresar con claridad qué necesitas y aportar el contexto adecuado para orientar a Copilot. Un buen prompt reduce ambigüedad, pero la respuesta sigue necesitando revisión y validación.</p>
+        </section>
+
+        <div class="study-sections">
+          <section class="study-section">
+            <span class="study-number">01</span>
+            <div>
+              <h3>Componentes de un buen prompt (prompt components)</h3>
+              <ul>
+                <li><strong>Objetivo (purpose):</strong> indica la tarea y el resultado esperado de forma directa.</li>
+                <li><strong>Contexto (context):</strong> menciona lenguaje, framework, archivos pertinentes, comportamiento existente y restricciones del proyecto.</li>
+                <li><strong>Ejemplos (examples):</strong> muestra formato, estilo, entradas o salidas cuando necesites una respuesta con un patrón concreto.</li>
+                <li>También puedes especificar formato de respuesta, audiencia, tono, compatibilidad y criterios de aceptación.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">02</span>
+            <div>
+              <h3>Zero-shot, one-shot y few-shot</h3>
+              <ul>
+                <li><strong>Zero-shot:</strong> pedir una tarea sin incluir ejemplos; es útil para preguntas directas y tareas comunes.</li>
+                <li><strong>One-shot:</strong> incluir un ejemplo para señalar el formato o patrón deseado.</li>
+                <li><strong>Few-shot:</strong> proporcionar varios ejemplos para orientar estilo, estructura o convenciones específicas.</li>
+                <li>Elige según cuánto necesite Copilot inferir: los ejemplos añaden orientación, pero no garantizan que la respuesta sea correcta.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">03</span>
+            <div>
+              <h3>Contexto e historial de chat (chat history)</h3>
+              <ul>
+                <li>Mantén abiertos o selecciona los archivos relevantes y evita incluir contexto ajeno a la tarea.</li>
+                <li>El historial puede ayudar a continuar una conversación y referirse a decisiones anteriores dentro del contexto disponible.</li>
+                <li>Si cambias de tarea, inicia una conversación nueva cuando convenga; no des por sentado que esto borra datos retenidos o elimina todo contexto del proyecto.</li>
+                <li>La disponibilidad y persistencia del historial dependen del producto, la configuración y las políticas actuales.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">04</span>
+            <div>
+              <h3>Buenas prácticas (best practices)</h3>
+              <ul>
+                <li>Empieza con el objetivo general y añade requisitos concretos, restricciones y casos límite.</li>
+                <li>Divide las tareas grandes en pasos pequeños y verificables; evita referencias ambiguas como “esto” si no está claro a qué apuntan.</li>
+                <li>Refina el prompt según lo que faltó en la respuesta y comprueba cada cambio con pruebas o revisión.</li>
+                <li>Usa ejemplos y convenciones del proyecto para guiar el resultado; aporta solo contexto pertinente y autorizado.</li>
+                <li>Un prompt claro reduce iteraciones innecesarias, pero no sustituye el criterio del desarrollador.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">05</span>
+            <div>
+              <h3>Lenguaje y entorno (language and environment)</h3>
+              <ul>
+                <li>Indica el lenguaje de programación, framework, plataforma o versión si no resulta evidente por el código y el contexto.</li>
+                <li>Para web, aclara si trabajas en frontend o backend y qué entorno usas, por ejemplo Node.js o ASP.NET.</li>
+                <li>Para bases de datos, describe el resultado o los datos que necesitas; para lenguajes de bajo nivel, especifica restricciones de memoria y rendimiento.</li>
+                <li>Puedes pedir la respuesta en un idioma humano concreto y ajustar opciones por lenguaje en el IDE cuando estén disponibles.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">06</span>
+            <div>
+              <h3>Flujo de trabajo de un prompt (prompt workflow)</h3>
+              <ol>
+                <li>Define el objetivo, el alcance y el resultado esperado.</li>
+                <li>Aporta contexto, ejemplos y restricciones relevantes.</li>
+                <li>Permite que Copilot interprete la solicitud y use el contexto y las herramientas disponibles.</li>
+                <li>Revisa la respuesta; aclara o refina el prompt si falta información.</li>
+                <li>Valida el resultado con pruebas, herramientas y criterios del proyecto antes de integrarlo.</li>
+              </ol>
+            </div>
+          </section>
+        </div>
+
+        <aside class="study-exam-focus">
+          <h3>Para responder preguntas</h3>
+          <p>Recuerda la tríada objetivo + contexto + ejemplos. Zero-shot no incluye ejemplos; one-shot incluye uno; few-shot incluye varios. El historial ayuda a mantener contexto, y la iteración permite corregir respuestas incompletas.</p>
+        </aside>
+        <p class="study-caveat">Las opciones de idioma, contexto, historial y personalización dependen de la versión del IDE, el producto, el plan y las políticas aplicables.</p>
+        <button id="study-prompting-quiz-btn" class="primary-btn study-quiz-btn">Practicar estas preguntas</button>
+      </div>
+
+      <div id="study-guide-use-cases" class="study-guide hidden" role="tabpanel" aria-labelledby="study-tab-use-cases" hidden>
+        <section class="study-summary" aria-labelledby="use-cases-summary-title">
+          <h3 id="use-cases-summary-title">La idea central</h3>
+          <p>Copilot puede apoyar tareas en distintas fases del desarrollo: aprender tecnologías, traducir y modernizar código, documentar proyectos, generar datos de prueba y depurar. Su mayor utilidad está en acelerar un primer borrador o análisis; el desarrollador conserva la responsabilidad de revisar, probar y validar el resultado.</p>
+        </section>
+
+        <div class="study-sections">
+          <section class="study-section">
+            <span class="study-number">01</span>
+            <div>
+              <h3>Aprender lenguajes y frameworks (learning languages and frameworks)</h3>
+              <ul>
+                <li>Pide ejemplos pequeños, explicaciones de sintaxis y una estructura inicial para una tecnología nueva.</li>
+                <li>Solicita aclaraciones sobre patrones del lenguaje, por ejemplo el punto de entrada <code>if __name__ == "__main__":</code> en Python.</li>
+                <li>Indica tu nivel, entorno y objetivo de aprendizaje; ejecuta el ejemplo y compáralo con la documentación vigente.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">02</span>
+            <div>
+              <h3>Traducir código (code translation)</h3>
+              <ul>
+                <li>Especifica el lenguaje de origen y el destino, archivos pertinentes y comportamiento que debe conservarse.</li>
+                <li>Para una conversión JavaScript a TypeScript, por ejemplo, considera tipos, dependencias, configuración y compilación.</li>
+                <li>La traducción inicial puede dejar errores de tipos o lógica: compila, ejecuta pruebas y revisa la equivalencia funcional.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">03</span>
+            <div>
+              <h3>Reducir cambios de contexto (context switching)</h3>
+              <ul>
+                <li>Chat en el IDE puede explicar archivos, ayudar con varias tecnologías y relacionar módulos sin salir del entorno de trabajo.</li>
+                <li>El archivo activo, la selección y el espacio de trabajo ayudan a contextualizar las solicitudes; adjunta referencias relevantes cuando haga falta.</li>
+                <li>No supongas que Copilot ve automáticamente todos los archivos o conoce decisiones no documentadas.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">04</span>
+            <div>
+              <h3>Documentar proyectos y código (project and code documentation)</h3>
+              <ul>
+                <li>Pide documentación de proyecto como un README, explicando propósito, instalación, configuración, uso y pruebas.</li>
+                <li>Solicita comentarios para archivos, funciones, procesos o APIs; especifica audiencia y nivel de detalle.</li>
+                <li>Comprueba que la documentación coincida con el comportamiento real, los comandos y la estructura del proyecto.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">05</span>
+            <div>
+              <h3>Datos de muestra y servidores simulados (sample data and mock servers)</h3>
+              <ul>
+                <li>Solicita conjuntos de datos realistas con campos, cantidades, formatos y restricciones concretas.</li>
+                <li>Copilot puede ayudar a crear archivos JSON y proponer cómo servirlos con un servidor simulado (mock server).</li>
+                <li>Usa datos ficticios, nunca datos personales o credenciales reales; valida el formato, los casos límite y la configuración antes de usarla.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">06</span>
+            <div>
+              <h3>Modernizar aplicaciones heredadas (legacy modernization)</h3>
+              <ul>
+                <li>Pide analizar una función y proponer refactorizaciones o sintaxis moderna en pasos pequeños.</li>
+                <li>Indica restricciones de compatibilidad y el comportamiento que debe mantenerse; revisa dependencias y efectos secundarios.</li>
+                <li>Compara resultados antes y después y ejecuta pruebas de regresión para comprobar que la modernización conserva la funcionalidad.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">07</span>
+            <div>
+              <h3>Depuración (debugging)</h3>
+              <ul>
+                <li>Comparte el error, el resultado esperado y el observado, el contexto relevante y los pasos para reproducirlo.</li>
+                <li>Expresa las restricciones que deben preservarse, como mantener una función o un comportamiento existente.</li>
+                <li>Evalúa la causa propuesta, aplica cambios de forma controlada y verifica el arreglo con pruebas o reproduciendo el escenario.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="study-section">
+            <span class="study-number">08</span>
+            <div>
+              <h3>Copilot a lo largo del SDLC (software development lifecycle)</h3>
+              <ul>
+                <li><strong>Planificación y diseño:</strong> explorar ideas, prototipos, estructuras y esquemas.</li>
+                <li><strong>Desarrollo y pruebas:</strong> completar o generar código, traducir, refactorizar y proponer pruebas.</li>
+                <li><strong>Documentación y mantenimiento:</strong> explicar sistemas, actualizar documentación y analizar posibles mejoras o errores.</li>
+                <li>En todas las fases, verifica la exactitud, seguridad, licencias, rendimiento y cumplimiento con las necesidades del proyecto.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <aside class="study-exam-focus">
+          <h3>Para responder preguntas</h3>
+          <p>Relaciona cada escenario con su uso: ejemplos para aprender, contexto para trabajar entre lenguajes, instrucciones para traducir sin perder funcionalidad, README y comentarios para documentar, datos ficticios para pruebas, cambios graduales para modernizar y reproducción más pruebas para depurar.</p>
+        </aside>
+        <p class="study-caveat">Copilot puede proponer código, documentación, datos y soluciones, pero no garantiza que sean correctos, seguros o completos. Revisa cada resultado y valida las afirmaciones con el proyecto y sus pruebas.</p>
+        <button id="study-use-cases-quiz-btn" class="primary-btn study-quiz-btn">Practicar estas preguntas</button>
       </div>
     </section>
 
@@ -337,7 +939,7 @@
       <h2>Resultado</h2>
       <p id="result-summary" class="result-summary"></p>
       <div id="result-breakdown" class="result-breakdown"></div>
-      <button id="restart-btn" class="primary-btn">Repetir quiz</button>
+      <button id="restart-btn" class="primary-btn">Volver al inicio</button>
     </section>
   </main>
 

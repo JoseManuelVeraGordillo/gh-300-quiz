@@ -86,7 +86,7 @@ const QUESTIONS = [
     options: ["Acceso al agente de codificación de Copilot.", "Acceso a archivos.", "Almacenamiento local del navegador.", "Modelos alternativos de IA.", "Búsqueda en la web."],
     correct: [0, 3, 4],
     confidence: "correct",
-    explanation: "Se centra en controles sobre el acceso al agente, los modelos disponibles y la búsqueda web."
+    explanation: "Según este módulo, los controles destacados son el acceso al agente de codificación, los modelos disponibles y la búsqueda web. Los permisos de archivos pueden configurarse por separado según el modo y el entorno; no son parte de la clave de esta pregunta. El almacenamiento local del navegador no corresponde a estos controles."
   },
   {
     id: 8,
@@ -2658,17 +2658,17 @@ const QUESTIONS = [
     category: "Fundamentos de GitHub Copilot",
     question: "Si haces clic en el icono de GitHub Copilot Chat en la parte superior derecha de VS Code mientras la ventana principal del chat ya está abierta en el lado derecho del IDE, ¿qué pasará?",
     type: "single",
-    options: ["Se abrirá la ventana de gestión del copiloto.", "Se abrirá la ventana del chat en línea.", "No pasará nada.", "Se abrirá la ventana de chat rápido."],
-    correct: [3], confidence: "correct",
-    explanation: "Con el chat principal ya abierto en la barra lateral, ese icono abre la ventana de chat rápido."
+    options: ["No pasará nada.", "Se abrirá la ventana de gestión del copiloto.", "Se abrirá la ventana de chat rápido.", "Se abrirá la ventana del chat en línea."],
+    correct: [0], confidence: "correct",
+    explanation: "Si la ventana principal del chat ya está abierta, volver a seleccionarla no cambia nada."
   },
   {
     id: 214,
     category: "Fundamentos de GitHub Copilot",
     question: "¿Cuál es el texto en cursiva que aparece cuando Copilot está activo?",
     type: "single",
-    options: ["Texto fantasma.", "Brillo.", "Comentarios.", "Siguiente edición."],
-    correct: [0], confidence: "correct",
+    options: ["Comentarios.", "Siguiente edición.", "Brillo.", "Texto fantasma."],
+    correct: [3], confidence: "correct",
     explanation: "Las sugerencias de código que aparecen en el editor se muestran como texto fantasma."
   },
   {
@@ -2676,17 +2676,17 @@ const QUESTIONS = [
     category: "Fundamentos de GitHub Copilot",
     question: "¿Cuáles de estas funciones están disponibles a través del Editor Interno o del chat en línea?",
     type: "multiple",
-    options: ["Propagar cambios a varios archivos.", "Código al vuelo.", "Comentarios en tiempo real.", "Añadir una prueba unitaria.", "Cambiar la configuración de un Copilot."],
-    correct: [1, 2, 3], confidence: "correct",
-    explanation: "Las funciones indicadas son código al vuelo, comentarios en tiempo real y ayuda para añadir una prueba unitaria."
+    options: ["Propagar cambios a varios archivos.", "Añadir una prueba unitaria.", "Cambiar la configuración de Copilot.", "Código al vuelo.", "Comentarios en tiempo real."],
+    correct: [1, 3, 4], confidence: "correct",
+    explanation: "Inline Chat trabaja junto al código seleccionado y permite generar o modificar código al vuelo, pedir comentarios o explicaciones en contexto y crear pruebas unitarias para una función. La configuración se cambia desde Settings; los cambios coordinados en varios archivos corresponden a flujos de edición más amplios, no al Inline Chat básico que evalúa esta pregunta."
   },
   {
     id: 216,
     category: "Fundamentos de GitHub Copilot",
     question: "¿Qué pasará si usas la flecha hacia arriba en la ventana principal del chat?",
     type: "single",
-    options: ["El archivo actual será ahora el contexto para el prompt.", "El último prompt volverá si se usó uno.", "Se abrirá una nueva ventana.", "No pasará nada."],
-    correct: [1], confidence: "correct",
+    options: ["No pasará nada.", "Se abrirá una nueva ventana.", "El último prompt volverá si se usó uno.", "El archivo actual será ahora el contexto para el prompt."],
+    correct: [2], confidence: "correct",
     explanation: "La flecha hacia arriba recupera el prompt anterior del historial de entrada del chat."
   },
   {
@@ -2694,8 +2694,407 @@ const QUESTIONS = [
     category: "Fundamentos de GitHub Copilot",
     question: "¿Qué criterios de búsqueda se introducen en la barra de búsqueda de Configuración de VS Code para personalizar GitHub Copilot?",
     type: "single",
-    options: ["Personalizaciones del copiloto.", "Escenarios.", "GitHub Copilot.", "GitHub."],
-    correct: [2], confidence: "correct",
+    options: ["GitHub Copilot.", "Escenarios.", "GitHub.", "Personalizaciones del copiloto."],
+    correct: [0], confidence: "correct",
     explanation: "Busca “GitHub Copilot” en Configuración para filtrar sus opciones de personalización."
+  },
+  {
+    id: 218,
+    category: "Pruebas de GitHub Copilot",
+    question: "¿Qué sugerencias de optimización del rendimiento puede ofrecer Copilot?",
+    type: "multiple",
+    options: ["Bibliotecas.", "Pruebas de humo.", "Refactorización y simplificación del código.", "Mejores prácticas.", "Soluciones más eficientes."],
+    correct: [2, 3, 4], confidence: "correct",
+    explanation: "Puede sugerir refactorizaciones, mejores prácticas y soluciones más eficientes; mide y prueba los cambios para verificar su efecto."
+  },
+  {
+    id: 219,
+    category: "Pruebas de GitHub Copilot",
+    question: "Cuando le pides a Copilot que pruebe casos límite, ¿qué respuestas puedes esperar?",
+    type: "multiple",
+    options: ["Uno o más casos de prueba pueden añadirse a un archivo de prueba.", "Se puede sugerir un comando para ejecutar los casos de prueba en los límites.", "Se puede añadir otra biblioteca al proyecto.", "Las bibliotecas de pruebas pueden añadirse a las dependencias de desarrollo en package.json.", "Se puede añadir un nuevo archivo de prueba al proyecto si aún no existe."],
+    correct: [0, 1, 4], confidence: "correct",
+    explanation: "Copilot puede proponer casos, añadirlos a un archivo existente o crear uno y sugerir cómo ejecutar las pruebas. Revisa los cambios y comandos antes de aceptarlos."
+  },
+  {
+    id: 220,
+    category: "Pruebas de GitHub Copilot",
+    question: "Copilot puede ayudar a añadir una biblioteca de aserciones y pruebas a tu aplicación web. ¿Qué función principal se utiliza para hacer una aserción?",
+    type: "single",
+    options: ["expect()", "toBe()", "validate()", "describe()"],
+    correct: [0], confidence: "correct",
+    explanation: "En Jest, expect() inicia una aserción; matchers como toBe() especifican qué resultado comprobar."
+  },
+  {
+    id: 221,
+    category: "Pruebas de GitHub Copilot",
+    question: "¿Cómo se puede probar un componente completo, como un componente de React?",
+    type: "single",
+    options: ["Renderizando el componente en memoria.", "Copilot solo puede ayudar con pruebas unitarias.", "Usando exclusivamente la función assert().", "Copilot solo puede ayudar con pruebas de integración."],
+    correct: [0], confidence: "correct",
+    explanation: "Las pruebas de componentes suelen renderizar el componente en un entorno de prueba en memoria y verificar su salida e interacciones."
+  },
+  {
+    id: 222,
+    category: "Pruebas de GitHub Copilot",
+    question: "En un caso de scripting entre sitios (XSS), ¿qué podría sugerir Copilot a un desarrollador?",
+    type: "single",
+    options: ["Usar innerHTML en lugar del contenido textual del elemento.", "Evitar usar JavaScript dentro del documento HTML.", "Prestar atención a los ataques de inyección SQL.", "Usar textContent en lugar de innerHTML."],
+    correct: [3], confidence: "correct",
+    explanation: "textContent inserta el valor como texto en lugar de interpretarlo como HTML, lo que ayuda a evitar que se ejecuten etiquetas o scripts inyectados."
+  },
+  {
+    id: 223,
+    category: "Planes de suscripción de GitHub Copilot",
+    question: "¿Qué configuración de un repositorio se utiliza para asegurar que sus archivos estén disponibles como parte de la base de conocimientos de Copilot?",
+    type: "single",
+    options: ["Ganchos de red.", "Espacios de códigos.", "Reglas.", "Páginas."],
+    correct: [3], confidence: "correct",
+    explanation: "En la demostración del curso, se configura GitHub Pages para que el contenido del repositorio esté disponible al crear la base de conocimientos."
+  },
+  {
+    id: 224,
+    category: "Planes de suscripción de GitHub Copilot",
+    question: "¿Qué enlace o configuración en GitHub.com se usa para ocultar un archivo de repositorio de la búsqueda de GitHub Copilot?",
+    type: "single",
+    options: ["Exclusión de contenido.", "Políticas.", "Acceso.", "Modelos."],
+    correct: [0], confidence: "correct",
+    explanation: "La opción Exclusión de contenido permite definir rutas que Copilot debe omitir como contexto, según las políticas y el plan."
+  },
+  {
+    id: 225,
+    category: "Planes de suscripción de GitHub Copilot",
+    question: "¿Qué funciones se pueden encontrar a nivel empresarial de GitHub Copilot?",
+    type: "multiple",
+    options: ["Opciones de pago.", "Datos de uso.", "Comprobación de suscripción.", "Alertas de Dependabot."],
+    correct: [1, 3], confidence: "correct",
+    explanation: "El curso destaca los datos e informes de uso para administración y las alertas de Dependabot como capacidades de seguridad disponibles en el entorno empresarial."
+  },
+  {
+    id: 226,
+    category: "Planes de suscripción de GitHub Copilot",
+    question: "¿Qué licencia de Copilot ofrece las características de seguridad más avanzadas?",
+    type: "single",
+    options: ["Profesional.", "Enterprise.", "Business.", "Free."],
+    correct: [1], confidence: "correct",
+    explanation: "El curso presenta Enterprise como el nivel con controles avanzados de seguridad, administración y cumplimiento para grandes organizaciones."
+  },
+  {
+    id: 227,
+    category: "Planes de suscripción de GitHub Copilot",
+    question: "¿Cuál NO es uno de los planes individuales de Copilot?",
+    type: "single",
+    options: ["Copilot Free.", "Copilot Pro+.", "Business.", "Copilot Pro."],
+    correct: [2], confidence: "correct",
+    explanation: "Free, Pro y Pro+ son planes individuales; Business está destinado a organizaciones y equipos."
+  },
+  {
+    id: 228,
+    category: "GitHub Copilot Chat y CLI",
+    question: "Cuando se inicia una revisión de código dentro de VS Code, ¿dónde coloca Copilot sus sugerencias?",
+    type: "single",
+    options: ["En la sección de comentarios de VS Code.", "En la ventana de chat.", "Como comentarios en el propio código.", "En la ventana del terminal."],
+    correct: [0], confidence: "correct",
+    explanation: "La revisión muestra los comentarios de Copilot en la sección de comentarios de VS Code, donde puedes aplicar o descartar cada sugerencia."
+  },
+  {
+    id: 229,
+    category: "GitHub Copilot Chat y CLI",
+    question: "¿Cómo se llama el archivo que usamos para dar instrucciones a Copilot y dónde se almacena?",
+    type: "single",
+    options: ["El archivo copilot-instructions.md se almacena en la carpeta oculta .github del repositorio.", "El archivo copilot.instructions.md se almacena en la carpeta .github.", "El archivo copilot-instructions.md se almacena en cualquier carpeta llamada GitHub.", "El archivo copilot-instructions.md se almacena directamente en la raíz del proyecto."],
+    correct: [0], confidence: "correct",
+    explanation: "La ruta de instrucciones del repositorio mostrada en el curso es .github/copilot-instructions.md."
+  },
+  {
+    id: 230,
+    category: "GitHub Copilot Chat y CLI",
+    question: "¿Cuál es el propósito principal de ofrecer la CLI de GitHub Copilot dentro del IDE?",
+    type: "single",
+    options: ["Evitar que el desarrollador interactúe con el sistema operativo.", "Añadir más herramientas en el futuro.", "Permitir que el desarrollador interactúe con GitHub sin abrir otra aplicación.", "Proporcionar una interfaz gráfica completa para el usuario."],
+    correct: [2], confidence: "correct",
+    explanation: "La CLI permite realizar tareas relacionadas con GitHub desde el terminal, sin cambiar a otra aplicación."
+  },
+  {
+    id: 231,
+    category: "GitHub Copilot Chat y CLI",
+    question: "¿Qué comandos forman parte de los comandos de barra que ofrece Copilot?",
+    type: "multiple",
+    options: ["/edit", "/file", "/correcto (/correct)", "/arregla (/fix)", "/explica (/explain)"],
+    correct: [0, 3, 4], confidence: "correct",
+    explanation: "Los nombres reales en Copilot son /edit, /fix y /explain (en el test aparecen traducidos como /arregla y /explica). /file y /correct no son comandos de barra: /file no existe como tal (los archivos se referencian con #file) y /correcto es solo una traducción inventada. Escribe / en el chat para ver los comandos disponibles en tu versión."
+  },
+  {
+    id: 232,
+    category: "GitHub Copilot Chat y CLI",
+    question: "¿Qué tareas son adecuadas para GitHub Copilot?",
+    type: "multiple",
+    options: [
+      "Inicializar una aplicación estándar (standard application scaffolding).",
+      "Añadir lógica de negocio (adding business logic).",
+      "Crear datos de muestra, por ejemplo un archivo JSON (creating sample data).",
+      "Añadir un registro a una base de datos (adding a database record).",
+      "Crear y configurar un servidor simulado (creating and configuring a mock server)."
+    ],
+    correct: [0, 2, 4], confidence: "correct",
+    explanation: "Copilot puede ayudar a iniciar una aplicación estándar, crear datos de muestra y configurar un servidor simulado. Revisa y adapta el resultado al comportamiento y las necesidades del proyecto."
+  },
+  {
+    id: 233,
+    category: "Uso de datos de GitHub Copilot",
+    question: "Hacia el final del ciclo de vida del prompt, ¿qué se revisa en la respuesta generada?",
+    type: "multiple",
+    options: ["Datos personales.", "Intentos de hackeo.", "Nombre del archivo.", "Código potencialmente dañino."],
+    correct: [0, 3], confidence: "correct",
+    explanation: "Los controles de la respuesta pueden revisar la exposición de datos personales y patrones de código potencialmente dañino antes de mostrarla. Los intentos de manipulación se comprueban principalmente durante el filtrado del prompt."
+  },
+  {
+    id: 234,
+    category: "Uso de datos de GitHub Copilot",
+    question: "Cuando un prompt se divide en palabras, fragmentos o incluso letras individuales, ¿cómo se llama este proceso?",
+    type: "single",
+    options: ["Semántica.", "Incrustación contextual.", "Predicción probabilística.", "Tokenización."],
+    correct: [3], confidence: "correct",
+    explanation: "La tokenización (tokenization) divide el texto en unidades llamadas tokens, que pueden ser palabras, partes de palabras u otras unidades."
+  },
+  {
+    id: 235,
+    category: "Uso de datos de GitHub Copilot",
+    question: "¿Qué opciones se utilizan como contexto al solicitar ayuda a Copilot?",
+    type: "multiple",
+    options: ["La URL del navegador.", "Microsoft Word.", "Código resaltado.", "El archivo actualmente abierto.", "El espacio de trabajo."],
+    correct: [2, 3, 4], confidence: "correct",
+    explanation: "El código seleccionado, el archivo actual y el espacio de trabajo pueden aportar contexto. La disponibilidad de otras fuentes depende de la función y configuración usadas."
+  },
+  {
+    id: 236,
+    category: "Uso de datos de GitHub Copilot",
+    question: "¿Cuál es la diferencia entre un prompt y una sugerencia?",
+    type: "single",
+    options: ["No hay diferencia entre un prompt y una sugerencia.", "Los prompts son consultas enviadas a través del chat; las sugerencias son las respuestas generadas por IA a un prompt.", "Las sugerencias aportan contexto y los prompts desinfectan la respuesta.", "Las sugerencias son consultas enviadas por chat y los prompts son las respuestas generadas por IA."],
+    correct: [1], confidence: "correct",
+    explanation: "El prompt (prompt) es la entrada o solicitud; la sugerencia (suggestion) es la salida generada por Copilot."
+  },
+  {
+    id: 237,
+    category: "Uso de datos de GitHub Copilot",
+    question: "¿Qué entornos están disponibles para usar GitHub Copilot?",
+    type: "multiple",
+    options: ["Un IDE.", "Una ventana de terminal.", "Una ventana de consola del navegador.", "Un sistema operativo.", "Repositorios de GitHub."],
+    correct: [0, 1, 4], confidence: "correct",
+    explanation: "El curso presenta el uso desde IDE, terminal y repositorios de GitHub; las funciones concretas dependen del producto y la configuración."
+  },
+  {
+    id: 238,
+    category: "Uso de datos de GitHub Copilot",
+    question: "¿Cuál es la secuencia correcta del ciclo de vida del prompt?",
+    type: "single",
+    options: [
+      "IDE proporciona contexto → Se construye el prompt → Proxy filtra el prompt → LLM formula la sugerencia → Proxy revisa la respuesta → La sugerencia aparece en el IDE.",
+      "Se construye el prompt → IDE proporciona contexto → Proxy filtra el prompt → LLM formula la sugerencia → Proxy revisa la respuesta → La sugerencia aparece en el IDE.",
+      "IDE proporciona contexto → Proxy filtra el prompt → Se construye el prompt → LLM formula la sugerencia → Proxy revisa la respuesta → La sugerencia aparece en el IDE.",
+      "IDE proporciona contexto → Se construye el prompt → LLM formula la sugerencia → Proxy filtra el prompt → Proxy revisa la respuesta → La sugerencia aparece en el IDE.",
+      "IDE proporciona contexto → Se construye el prompt → Proxy filtra el prompt → Proxy revisa la respuesta → LLM formula la sugerencia → La sugerencia aparece en el IDE."
+    ],
+    correct: [0], confidence: "correct",
+    explanation: "El orden es contexto en el IDE, construcción del prompt, filtrado del prompt en el proxy, generación por el LLM, revisión de la respuesta en el proxy y presentación en el IDE."
+  },
+  {
+    id: 239,
+    category: "GitHub Copilot Prompting",
+    question: "¿Cuáles son las tres clasificaciones habituales que Copilot utiliza para definir los prompts?",
+    type: "multiple",
+    options: ["Accionables (actionable).", "Ambiguos (ambiguous).", "Tonterías (nonsense).", "Informativos (informational).", "Orientados a soporte (support-oriented)."],
+    correct: [0, 3, 4], confidence: "correct",
+    explanation: "Las tres clasificaciones indicadas son informativas, accionables y orientadas a soporte."
+  },
+  {
+    id: 240,
+    category: "GitHub Copilot Prompting",
+    question: "¿Qué sugerencias se consideran efectivas para construir prompts?",
+    type: "multiple",
+    options: ["Proporcionar todo el contexto necesario (provide relevant context).", "Añadir puntuación adecuada (add proper punctuation).", "Dar ejemplos (provide examples).", "Ser claro y específico (be clear and specific).", "Incluir fechas de uso (include usage dates)."],
+    correct: [0, 2, 3], confidence: "correct",
+    explanation: "Los prompts efectivos aportan contexto pertinente, ejemplos cuando ayudan y una instrucción clara y específica."
+  },
+  {
+    id: 241,
+    category: "GitHub Copilot Prompting",
+    question: "¿Cuáles son algunas formas de adaptar las sugerencias de Copilot al lenguaje con el que trabajas?",
+    type: "multiple",
+    options: ["Usar ajustes del IDE específicos del lenguaje (IDE language-specific settings).", "Mencionar el lenguaje de programación en el prompt (name the programming language in the prompt).", "Activar o desactivar la configuración de Copilot para ese lenguaje (enable or disable Copilot for that language).", "Dejar que Copilot lo resuelva sin indicar el contexto (let Copilot infer it without context).", "Escribir el prompt en español (write the prompt in Spanish)."],
+    correct: [0, 1, 2], confidence: "correct",
+    explanation: "Los ajustes por lenguaje del IDE y mencionar o configurar el lenguaje ayudan a orientar las sugerencias. El idioma humano del prompt no sustituye esa configuración."
+  },
+  {
+    id: 242,
+    category: "GitHub Copilot Prompting",
+    question: "¿Qué opciones pueden considerarse buenos principios de ingeniería de prompts?",
+    type: "multiple",
+    options: ["Ser lo más ambiguo posible (be as ambiguous as possible).", "Refinar de lo general a lo específico (refine from general to specific).", "Proporcionar ejemplos (provide examples).", "Evitar experimentar (avoid experimenting)."],
+    correct: [1, 2], confidence: "correct",
+    explanation: "Empieza con el objetivo general, concreta los requisitos y aporta ejemplos que ilustren el resultado esperado."
+  },
+  {
+    id: 243,
+    category: "GitHub Copilot Prompting",
+    question: "¿Cuáles de estos prompts hacen referencia al historial de chat existente?",
+    type: "multiple",
+    options: ["¿Hubo algún prompt que afectara al ancho de página? (Did any prompt affect the page width?)", "Recuérdame el color que elegimos para la pancarta. (Remind me what banner color we chose.)", "Ayúdame a construir un zapato. (Help me build a shoe.)", "Escribe un caso de prueba para la función llamada X. (Write a test case for function X.)", "Muéstrame todos los prompts usados en el proyecto hasta ahora. (Show me all prompts used in this project so far.)"],
+    correct: [0, 1, 4], confidence: "correct",
+    explanation: "Las opciones A, B y E preguntan por decisiones o prompts de conversaciones anteriores; para responderlas, Copilot necesita disponer de ese historial como contexto."
+  },
+  {
+    id: 244,
+    category: "GitHub Copilot Prompting",
+    question: "¿Qué tipo de prompt es el más adecuado para chatbots?",
+    type: "single",
+    options: ["One-shot (un ejemplo).", "Cadena de pensamiento (chain-of-thought).", "Few-shot (varios ejemplos).", "Zero-shot (sin ejemplos)."],
+    correct: [0], confidence: "correct",
+    explanation: "Según la clave que compartiste, la respuesta es One-shot: incluye un ejemplo que orienta el formato. La utilidad de cada técnica depende de la tarea; no es una regla universal para todos los chatbots."
+  },
+  {
+    id: 245,
+    category: "GitHub Copilot Prompting",
+    question: "¿Qué opciones son buenas prácticas al construir prompts?",
+    type: "multiple",
+    options: ["Incluir contexto relevante (include relevant context).", "Definir el propósito del prompt (define the prompt's purpose).", "Copiar y pegar el error en todos los casos (always copy and paste the error).", "Usar comedia en el prompt (use comedy in the prompt).", "Proporcionar ejemplos (provide examples)."],
+    correct: [0, 1, 4], confidence: "correct",
+    explanation: "Define el propósito, aporta contexto pertinente y añade ejemplos cuando ayuden a precisar el formato o patrón deseado."
+  },
+  {
+    id: 246,
+    category: "Casos de uso para desarrolladores de GitHub Copilot",
+    question: "¿En qué aspectos de las etapas de planificación y diseño puede ayudar Copilot al construir una nueva aplicación?",
+    type: "multiple",
+    options: ["Crear un prototipo funcional.", "Realizar el despliegue.", "Proponer una estructura de directorios.", "Gestionar la incorporación de usuarios.", "Apoyar una lluvia de ideas."],
+    correct: [0, 2, 4], confidence: "correct",
+    explanation: "Durante la planificación y el diseño, Copilot puede ayudar a explorar ideas, crear prototipos y proponer estructuras de directorios."
+  },
+  {
+    id: 247,
+    category: "Casos de uso para desarrolladores de GitHub Copilot",
+    question: "¿Qué problemas de seguridad debería tener en cuenta un desarrollador al usar Copilot?",
+    type: "multiple",
+    options: ["Patrones propietarios (proprietary patterns).", "Sesgo y estereotipos (bias and stereotypes).", "Hacking.", "Inyección SQL (SQL injection).", "Sugerencias de código desactualizadas (outdated code suggestions)."],
+    correct: [0, 1, 4], confidence: "correct",
+    explanation: "El curso destaca posibles conflictos con patrones propietarios, sesgos de los datos de entrenamiento y sugerencias desactualizadas. Revisa también cada propuesta con las herramientas de seguridad apropiadas."
+  },
+  {
+    id: 248,
+    category: "Casos de uso para desarrolladores de GitHub Copilot",
+    question: "El IDE puede ayudar a encontrar errores de sintaxis. ¿Qué tipo de error puede ser difícil de detectar y Copilot puede ayudar a identificar?",
+    type: "single",
+    options: ["Errores tipográficos.", "Errores basados en el sistema operativo.", "Errores en tiempo de ejecución.", "Errores lógicos (logical errors)."],
+    correct: [3], confidence: "correct",
+    explanation: "Copilot puede analizar el comportamiento y señalar posibles errores lógicos que no necesariamente producen avisos de sintaxis. Comprueba la hipótesis reproduciendo el problema y ejecutando pruebas."
+  },
+  {
+    id: 249,
+    category: "Casos de uso para desarrolladores de GitHub Copilot",
+    question: "¿Cuál sería una consigna típica para añadir un archivo JSON de muestra a un proyecto?",
+    type: "multiple",
+    options: ["Añadir un archivo JSON de ejemplo con un array de objetos empleados.", "Utilizar datos de muestra para este proyecto.", "Crear un archivo de datos de ejemplo para este proyecto.", "Añadir un archivo JSON de muestra con un objeto empleado."],
+    correct: [0, 3], confidence: "correct",
+    explanation: "Las opciones A y D especifican el archivo y la estructura concreta de los datos de ejemplo, en lugar de pedir datos de forma general."
+  },
+  {
+    id: 250,
+    category: "Casos de uso para desarrolladores de GitHub Copilot",
+    question: "¿Qué opción puede ser una buena consigna para empezar a aprender un lenguaje con GitHub Copilot?",
+    type: "multiple",
+    options: ["Ayúdame a aprender sobre bases de datos.", "Quiero aprender C#.", "Soy nuevo en Python; ayúdame a empezar un proyecto para aprender el lenguaje.", "Soy nuevo en JavaScript para el navegador; ayúdame a crear código sencillo para aprender el lenguaje."],
+    correct: [2, 3], confidence: "correct",
+    explanation: "Las opciones C y D especifican que el usuario está aprendiendo, el lenguaje y el tipo de ayuda práctica que necesita."
+  },
+  {
+    id: 251,
+    category: "Casos de uso para desarrolladores de GitHub Copilot",
+    question: "Al convertir una aplicación de un lenguaje a otro, ¿cómo se llama el botón de Copilot que conserva los cambios propuestos en el editor?",
+    type: "single",
+    options: ["Instalación (Install).", "Continúa (Continue).", "Ejecutar (Run).", "Cancelar (Cancel).", "Mantener (Keep)."],
+    correct: [4], confidence: "correct",
+    explanation: "Keep (Mantener) acepta y conserva los cambios propuestos en el editor; Continue (Continuar) avanza al siguiente paso de la tarea."
+  },
+  {
+    id: 252,
+    category: "Casos de uso para desarrolladores de GitHub Copilot",
+    question: "¿Qué tipos de documentación se pueden añadir normalmente a un proyecto usando Copilot?",
+    type: "multiple",
+    options: ["Un documento de marketing para la aplicación.", "Un documento de cómo usar la aplicación.", "Un archivo README.", "Comentarios sobre un archivo concreto."],
+    correct: [2, 3], confidence: "correct",
+    explanation: "La clave del curso apunta al README del proyecto y a los comentarios técnicos en archivos. Aunque Copilot también puede ayudar con guías de usuario, esta pregunta espera las opciones C y D."
+  },
+  {
+    id: 253,
+    category: "Casos de uso para desarrolladores de GitHub Copilot",
+    question: "¿Qué método de mejora de una aplicación y su código se muestra en el vídeo?",
+    type: "single",
+    options: ["Añadir comentarios.", "Traducir el código.", "Modernizar el código (modernization).", "Crear documentación."],
+    correct: [2], confidence: "correct",
+    explanation: "El vídeo muestra la modernización de código heredado mediante refactorizaciones y patrones más actuales, procurando conservar su comportamiento."
+  },
+  {
+    id: 254,
+    category: "Casos de uso para desarrolladores de GitHub Copilot",
+    question: "¿Qué significa el cambio de contexto (context switching) para Copilot?",
+    type: "multiple",
+    options: ["Copilot entiende cualquier cambio de contenido.", "Responde según el archivo abierto actualmente.", "Determina qué lenguaje usar según el entorno.", "Responde según el proyecto abierto actualmente."],
+    correct: [1, 3], confidence: "correct",
+    explanation: "En esta pregunta, el curso usa cambio de contexto para referirse a adaptar la asistencia al archivo activo y al proyecto abierto."
+  },
+  {
+    id: 255,
+    category: "Fundamentos de GitHub Copilot",
+    question: "Además de usar el menú contextual, ¿qué atajos pueden activar el chat en línea (Inline Chat) en VS Code?",
+    type: "multiple",
+    options: ["Ctrl+I (Windows/Linux).", "Command+ILC.", "Shift+L.", "Command+I (macOS)."],
+    correct: [0, 3], confidence: "correct",
+    explanation: "El atajo habitual es Ctrl+I en Windows/Linux y Command+I en macOS. La opción A del material parece contener un error de transcripción: Ctrl+Shift+I no es el atajo estándar de Inline Chat."
+  },
+  {
+    id: 256,
+    category: "Fundamentos de GitHub Copilot",
+    question: "¿Cuáles son capacidades de GitHub Copilot?",
+    type: "multiple",
+    options: ["Filtro de seguridad (security filtering).", "Configuración de la base de datos.", "Filtro de red.", "Completado de código (code completion)."],
+    correct: [0, 3], confidence: "correct",
+    explanation: "Copilot ofrece completado de código y aplica controles de seguridad; no configura bases de datos ni filtros de red por sí solo."
+  },
+  {
+    id: 257,
+    category: "Fundamentos de GitHub Copilot",
+    question: "¿Qué ejemplos corresponden al uso responsable de GitHub Copilot mediante validación y mitigación?",
+    type: "multiple",
+    options: ["Mostrar enlaces de citas a vídeos.", "Hacer referencia a un repositorio.", "Realizar verificación humana (human verification).", "Comprobar si la respuesta final contiene secretos."],
+    correct: [2, 3], confidence: "correct",
+    explanation: "La revisión humana y la comprobación de secretos son medidas concretas de validación y mitigación antes de integrar una sugerencia."
+  },
+  {
+    id: 258,
+    category: "Fundamentos de GitHub Copilot",
+    question: "¿Cuáles son tres principios de la IA responsable?",
+    type: "multiple",
+    options: ["Respetar la privacidad, ganarse la confianza y priorizar la seguridad.", "Entablar una conversación trivial.", "Clasificar a los usuarios en grupos de edad.", "Tratar a todos los usuarios de manera justa (fairness).", "Producir respuestas consistentes, fiables y seguras (reliability and safety)."],
+    correct: [0, 3, 4], confidence: "correct",
+    explanation: "Las opciones combinan principios de privacidad y confianza, equidad, y fiabilidad y seguridad."
+  },
+  {
+    id: 259,
+    category: "Fundamentos de GitHub Copilot",
+    question: "¿Cómo se instala GitHub Copilot en VS Code en Windows?",
+    type: "single",
+    options: ["Como un archivo ejecutable.", "Como plugin del navegador.", "Como una DLL.", "Como una extensión de VS Code (VS Code extension)."],
+    correct: [3], confidence: "correct",
+    explanation: "Copilot se instala en VS Code mediante su extensión y requiere iniciar sesión con una cuenta habilitada."
+  },
+  {
+    id: 260,
+    category: "Fundamentos de GitHub Copilot",
+    question: "¿Cuáles son categorías generales de problemas comunes al solucionar problemas de Copilot?",
+    type: "multiple",
+    options: ["Problemas del entorno, como archivos faltantes (environment issues).", "Un navegador no actualizado.", "Problemas de red y conectividad (network and connectivity).", "Acceso al servicio y autenticación (service access and authentication).", "Un sistema operativo no actualizado."],
+    correct: [0, 2, 3], confidence: "correct",
+    explanation: "Las categorías destacadas son problemas del entorno, de conectividad y de acceso o autenticación."
   }
 ];

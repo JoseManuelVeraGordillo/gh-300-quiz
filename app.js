@@ -13,6 +13,13 @@
   const studyOpenBtn = document.getElementById("study-open-btn");
   const studyBackBtn = document.getElementById("study-back-btn");
   const studyQuizBtn = document.getElementById("study-quiz-btn");
+  const studyPrivacyQuizBtn = document.getElementById("study-privacy-quiz-btn");
+  const studyTestsQuizBtn = document.getElementById("study-tests-quiz-btn");
+  const studyPlansQuizBtn = document.getElementById("study-plans-quiz-btn");
+  const studyChatCliQuizBtn = document.getElementById("study-chat-cli-quiz-btn");
+  const studyDataQuizBtn = document.getElementById("study-data-quiz-btn");
+  const studyPromptingQuizBtn = document.getElementById("study-prompting-quiz-btn");
+  const studyUseCasesQuizBtn = document.getElementById("study-use-cases-quiz-btn");
   const studyTabs = [...document.querySelectorAll(".study-tab")];
   const studyGuides = [...document.querySelectorAll(".study-guide")];
 
@@ -255,7 +262,56 @@
 
   function startStudyQuiz() {
     categorySelect.value = "Fundamentos de GitHub Copilot";
+    questionCountInput.value = "11";
+    onlyConfirmedCheckbox.checked = false;
+    startQuiz();
+  }
+
+  function startPrivacyQuiz() {
+    categorySelect.value = "Fundamentos de la privacidad de GitHub Copilot";
+    questionCountInput.value = "7";
+    onlyConfirmedCheckbox.checked = false;
+    startQuiz();
+  }
+
+  function startTestsQuiz() {
+    categorySelect.value = "Pruebas de GitHub Copilot";
+    questionCountInput.value = "8";
+    onlyConfirmedCheckbox.checked = false;
+    startQuiz();
+  }
+
+  function startPlansQuiz() {
+    categorySelect.value = "Planes de suscripción de GitHub Copilot";
     questionCountInput.value = "5";
+    onlyConfirmedCheckbox.checked = false;
+    startQuiz();
+  }
+
+  function startChatCliQuiz() {
+    categorySelect.value = "GitHub Copilot Chat y CLI";
+    questionCountInput.value = "5";
+    onlyConfirmedCheckbox.checked = false;
+    startQuiz();
+  }
+
+  function startDataQuiz() {
+    categorySelect.value = "Uso de datos de GitHub Copilot";
+    questionCountInput.value = "6";
+    onlyConfirmedCheckbox.checked = false;
+    startQuiz();
+  }
+
+  function startPromptingQuiz() {
+    categorySelect.value = "GitHub Copilot Prompting";
+    questionCountInput.value = "7";
+    onlyConfirmedCheckbox.checked = false;
+    startQuiz();
+  }
+
+  function startUseCasesQuiz() {
+    categorySelect.value = "Casos de uso para desarrolladores de GitHub Copilot";
+    questionCountInput.value = "9";
     onlyConfirmedCheckbox.checked = false;
     startQuiz();
   }
@@ -396,6 +452,13 @@
     });
   });
   studyQuizBtn.addEventListener("click", startStudyQuiz);
+  studyPrivacyQuizBtn.addEventListener("click", startPrivacyQuiz);
+  studyTestsQuizBtn.addEventListener("click", startTestsQuiz);
+  studyPlansQuizBtn.addEventListener("click", startPlansQuiz);
+  studyChatCliQuizBtn.addEventListener("click", startChatCliQuiz);
+  studyDataQuizBtn.addEventListener("click", startDataQuiz);
+  studyPromptingQuizBtn.addEventListener("click", startPromptingQuiz);
+  studyUseCasesQuizBtn.addEventListener("click", startUseCasesQuiz);
   checkBtn.addEventListener("click", checkAnswer);
   nextBtn.addEventListener("click", nextQuestion);
   quitBtn.addEventListener("click", quitQuiz);
