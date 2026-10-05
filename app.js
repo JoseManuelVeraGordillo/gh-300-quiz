@@ -37,6 +37,7 @@
   const resultSummaryEl = document.getElementById("result-summary");
   const resultBreakdownEl = document.getElementById("result-breakdown");
   const restartBtn = document.getElementById("restart-btn");
+  const missedBtn = document.getElementById("missed-btn");
 
   const statsToggleBtn = document.getElementById("stats-toggle");
   const statsCloseBtn = document.getElementById("stats-close");
@@ -78,10 +79,11 @@
         totalAnswered: parsed.totalAnswered || 0,
         totalCorrect: parsed.totalCorrect || 0,
         byCategory: parsed.byCategory || {},
-        sessions: Array.isArray(parsed.sessions) ? parsed.sessions : []
+        sessions: Array.isArray(parsed.sessions) ? parsed.sessions : [],
+        missed: Array.isArray(parsed.missed) ? parsed.missed : []
       };
     } catch {
-      return { totalAnswered: 0, totalCorrect: 0, byCategory: {}, sessions: [] };
+      return { totalAnswered: 0, totalCorrect: 0, byCategory: {}, sessions: [], missed: [] };
     }
   }
 
@@ -98,6 +100,11 @@
     cat.total += 1;
     if (isCorrect) cat.correct += 1;
     stats.byCategory[question.category] = cat;
+
+    const missed = new Set(stats.missed);
+    if (isCorrect) missed.delete(question.id);
+    else missed.add(question.id);
+    stats.missed = [...missed];
 
     saveStats(stats);
   }
@@ -150,6 +157,23 @@
     }
 
     renderReadiness(stats.totalAnswered, pct);
+    renderMissedButton(stats.missed);
+  }
+
+  function renderMissedButton(missedIds) {
+    const count = QUESTIONS.filter((q) => missedIds.includes(q.id)).length;
+    missedBtn.textContent = `☠️ Muerte a pellizcos (${count})`;
+    missedBtn.disabled = count === 0;
+  }
+
+  function startMissedQuiz() {
+    const missedIds = new Set(loadStats().missed);
+    const pool = QUESTIONS.filter((q) => missedIds.has(q.id));
+    if (pool.length === 0) {
+      alert("No tienes preguntas falladas pendientes.");
+      return;
+    }
+    startQuiz(pool);
   }
 
   function renderReadiness(totalAnswered, pct) {
@@ -217,8 +241,10 @@
 
     const requested = Math.max(1, parseInt(questionCountInput.value, 10) || 10);
     const count = Math.min(requested, pool.length);
-    const chosen = shuffle(pool).slice(0, count);
+    return buildQuestionsFrom(shuffle(pool).slice(0, count));
+  }
 
+  function buildQuestionsFrom(chosen) {
     return chosen.map((q) => {
       let options = q.options.map((text, idx) => ({ text, idx }));
       if (shuffleOptionsCheckbox.checked) options = shuffle(options);
@@ -226,8 +252,8 @@
     });
   }
 
-  function startQuiz() {
-    const questions = buildSessionQuestions();
+  function startQuiz(forcedPool) {
+    const questions = Array.isArray(forcedPool) ? buildQuestionsFrom(forcedPool) : buildSessionQuestions();
     if (questions.length === 0) {
       alert("No hay preguntas disponibles con esos filtros.");
       return;
@@ -431,7 +457,8 @@
     session = null;
   }
 
-  startBtn.addEventListener("click", startQuiz);
+  startBtn.addEventListener("click", () => startQuiz());
+  missedBtn.addEventListener("click", startMissedQuiz);
   studyOpenBtn.addEventListener("click", openStudyGuide);
   studyBackBtn.addEventListener("click", () => {
     studyScreen.classList.add("hidden");
